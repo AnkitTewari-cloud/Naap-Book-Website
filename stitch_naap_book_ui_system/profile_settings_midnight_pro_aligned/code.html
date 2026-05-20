@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile &amp; Settings - Naap Book</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "secondary-container": "#3e495d",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-container": "#dad7ff",
+                        "tertiary": "#ffb695",
+                        "surface-container-low": "#131b2e",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "surface-variant": "#2d3449",
+                        "secondary-fixed": "#d8e3fb",
+                        "on-secondary": "#263143",
+                        "on-background": "#dae2fd",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-secondary-fixed": "#111c2d",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "surface-container-highest": "#2d3449",
+                        "background": "#0b1326",
+                        "primary": "#c3c0ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-tertiary-container": "#ffd2be",
+                        "tertiary-container": "#a44100",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-primary-fixed": "#0f0069",
+                        "surface": "#0b1326",
+                        "on-primary": "#1d00a5",
+                        "outline": "#918fa1",
+                        "surface-container-lowest": "#060e20",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "surface-tint": "#c3c0ff",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "on-surface": "#dae2fd",
+                        "on-tertiary": "#571f00",
+                        "outline-variant": "#464555",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-container": "#aeb9d0",
+                        "surface-dim": "#0b1326",
+                        "secondary": "#bcc7de",
+                        "primary-container": "#4f46e5",
+                        "surface-container": "#171f33",
+                        "on-tertiary-fixed": "#351000",
+                        "surface-bright": "#31394d",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "on-error": "#690005",
+                        "on-surface-variant": "#c7c4d8",
+                        "inverse-primary": "#4d44e3",
+                        "primary-fixed": "#e2dfff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "margin-desktop": "40px",
+                        "base": "4px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Desktop SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-base fixed left-0 top-0 h-screen w-[260px] bg-surface-container dark:bg-surface-container-high border-r border-outline dark:border-outline-variant z-50">
+<!-- Header -->
+<div class="px-md py-lg border-b border-outline-variant/30 flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container">local_mall</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-secondary dark:text-secondary-fixed">Naap Book</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Management Portal</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto py-md flex flex-col gap-sm px-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">event_available</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">add_task</span>
+<span class="font-label-md text-label-md">Add New Job</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-secondary dark:text-secondary-fixed-dim font-bold border-r-4 border-secondary dark:border-secondary-fixed-dim bg-secondary-container/10 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</div>
+<!-- CTA -->
+<div class="px-md py-lg mt-auto">
+<button class="w-full bg-primary-container text-on-primary-container rounded-lg py-sm font-label-md text-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">add</span>
+                New Job
+            </button>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-260px)] h-16 bg-surface dark:bg-surface-dim border-b border-outline dark:border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop z-40">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-on-surface dark:text-on-surface-variant">Ramesh Tailoring Works</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 rounded-full bg-surface-container border border-outline-variant overflow-hidden hover:opacity-80 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-[80px] pb-24 md:pb-lg md:ml-[260px] px-margin-mobile md:px-margin-desktop min-h-screen">
+<div class="max-w-5xl mx-auto space-y-lg">
+<!-- Page Title -->
+<div class="mb-xl">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Profile &amp; Settings</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Manage your account details, preferences, and system configurations.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<!-- Left Column (Profile & Basic Details) -->
+<div class="lg:col-span-2 space-y-md">
+<!-- Basic Details Card -->
+<div class="bg-surface-container rounded-xl border border-outline-variant p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-lg border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined text-secondary">manage_accounts</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Basic Details</h3>
+</div>
+<div class="flex flex-col sm:flex-row gap-lg mb-lg items-start sm:items-center">
+<div class="w-24 h-24 rounded-full bg-surface-variant border-2 border-outline-variant overflow-hidden shrink-0 relative group">
+<img alt="Profile Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged South Asian man in a modern, well-lit studio. The lighting is soft and flattering, creating a high-end corporate aesthetic. The background is a deeply blurred dark slate blue to match the Midnight Pro UI theme, ensuring the subject stands out sharply." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo3h9lkJJz93eBfXn2DknsG6AA-D7bURRsO6GjOHjgi5l-Ns7VSY57h3aJU7NMWhhY6Lyot1MwSZLoXKb79FBr2Mcu7n2-3SYm8zmhM31EOFFkycuJRQYzy5i5caos28KeEgkAIfYsPww1_k1MOK6mAdnuk59UMp7WaLFc48OwtiKn5uyaXpXJk7YcvCJmVXB7IJDjjx1SdyxAWyJ_jTK1v4LdMoOi3ngq49wRHcWcGPasq8Ff-ieULhvH7izXX--TukWy6e6kEW8"/>
+<div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-white">photo_camera</span>
+</div>
+</div>
+<div class="flex-1">
+<button class="bg-surface-variant hover:bg-surface-bright text-on-surface border border-outline-variant rounded-lg px-md py-sm font-label-md text-label-md transition-colors">Change Photo</button>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">JPG, GIF or PNG. Max size of 800K</p>
+</div>
+</div>
+<form class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">First Name</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-shadow font-body-md text-body-md placeholder:text-outline" type="text" value="Ramesh"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">Last Name</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-shadow font-body-md text-body-md placeholder:text-outline" type="text" value="Kumar"/>
+</div>
+<div class="space-y-xs sm:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant block">Email Address</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-shadow font-body-md text-body-md placeholder:text-outline" type="email" value="ramesh@tailoringworks.com"/>
+</div>
+<div class="space-y-xs sm:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant block">Phone Number</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-shadow font-body-md text-body-md placeholder:text-outline" type="tel" value="+91 98765 43210"/>
+</div>
+<div class="sm:col-span-2 pt-sm flex justify-end">
+<button class="bg-primary-container text-on-primary-container rounded-lg px-lg py-sm font-label-md text-label-md hover:opacity-90 transition-opacity" type="button">Save Changes</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column (Preferences & System) -->
+<div class="space-y-md">
+<!-- Language & Region Card -->
+<div class="bg-surface-container rounded-xl border border-outline-variant p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-md border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined text-secondary">language</span>
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface">Language</h3>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant block">System Language</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none transition-shadow font-body-md text-body-md appearance-none">
+<option>English (United States)</option>
+<option>English (UK)</option>
+<option>Hindi</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Theme Settings Card -->
+<div class="bg-surface-container rounded-xl border border-outline-variant p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-md border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined text-secondary">palette</span>
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface">Theme</h3>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<button class="bg-surface-variant border border-outline-variant rounded-lg p-sm flex flex-col items-center gap-xs hover:border-secondary transition-colors group">
+<div class="w-full h-12 bg-[#f8fafc] rounded flex items-center justify-center border border-[#e2e8f0]">
+<span class="material-symbols-outlined text-[#334155]">light_mode</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant group-hover:text-on-surface">Light</span>
+</button>
+<button class="bg-secondary-container/20 border-2 border-primary-container rounded-lg p-sm flex flex-col items-center gap-xs">
+<div class="w-full h-12 bg-background rounded flex items-center justify-center border border-surface-container-high">
+<span class="material-symbols-outlined text-on-surface">dark_mode</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface">Midnight Pro</span>
+</button>
+</div>
+</div>
+<!-- System Settings Card -->
+<div class="bg-surface-container rounded-xl border border-outline-variant p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-md border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined text-secondary">settings_system_daydream</span>
+<h3 class="font-body-lg text-body-lg font-semibold text-on-surface">System Settings</h3>
+</div>
+<div class="space-y-lg">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-body-md text-on-surface">Email Notifications</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Receive updates on new jobs</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-on-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-body-md text-on-surface">Two-Factor Auth</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Enhanced account security</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-on-primary-container"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-body-md text-on-surface">Data Sync</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Auto-sync customer records</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-outline-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container peer-checked:after:bg-on-primary-container"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (Synthesized from SideNav) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface dark:bg-surface-dim border-t border-outline dark:border-outline-variant flex justify-around items-center h-16 pb-safe z-50">
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-label-sm text-[10px]">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]">add_task</span>
+<span class="font-label-sm text-[10px]">Add Job</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-secondary font-bold" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-[10px]">Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-[20px]">menu</span>
+<span class="font-label-sm text-[10px]">More</span>
+</a>
+</nav>
+</body></html>

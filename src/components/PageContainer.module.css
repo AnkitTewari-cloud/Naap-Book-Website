@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--page-padding-y) var(--page-padding-x);
+  padding-bottom: var(--page-padding-bottom);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.noBottomPad {
+  padding-bottom: var(--page-padding-y);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-bottom: var(--spacing-xl);
+  }
+
+  .noBottomPad {
+    padding-bottom: var(--page-padding-y);
+  }
+}

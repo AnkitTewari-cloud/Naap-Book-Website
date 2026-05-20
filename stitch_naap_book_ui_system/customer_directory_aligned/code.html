@@ -1,0 +1,429 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Naap Book - Customers Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#f0ecf9",
+                "secondary-container": "#5dfd8a",
+                "info": "#3b82f6",
+                "warning": "#f59e0b",
+                "surface-container-lowest": "#ffffff",
+                "outline": "#e5e7eb",
+                "primary-container": "#4f46e5",
+                "surface": "#ffffff",
+                "surface-bright": "#fcf8ff",
+                "tertiary-fixed-dim": "#ffb695",
+                "on-tertiary": "#ffffff",
+                "surface-dim": "#dcd8e5",
+                "primary-fixed-dim": "#c3c0ff",
+                "on-surface": "#111827",
+                "surface-container-highest": "#e4e1ee",
+                "on-primary-fixed": "#0f0069",
+                "secondary": "#006d2f",
+                "surface-variant": "#e4e1ee",
+                "primary-fixed": "#e2dfff",
+                "on-surface-variant": "#464555",
+                "on-tertiary-container": "#ffd2be",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#302f39",
+                "inverse-on-surface": "#f3effc",
+                "error-container": "#ffdad6",
+                "surface-tint": "#4d44e3",
+                "on-tertiary-fixed": "#351000",
+                "on-secondary-container": "#007232",
+                "on-error-container": "#93000a",
+                "surface-container-high": "#eae6f4",
+                "on-primary-fixed-variant": "#3323cc",
+                "outline-variant": "#c7c4d8",
+                "on-primary-container": "#dad7ff",
+                "error": "#ef4444",
+                "on-secondary-fixed": "#002109",
+                "tertiary-container": "#a44100",
+                "surface-container-low": "#f5f2ff",
+                "secondary-fixed": "#66ff8e",
+                "secondary-fixed-dim": "#3de273",
+                "tertiary": "#7e3000",
+                "on-tertiary-fixed-variant": "#7b2f00",
+                "tertiary-fixed": "#ffdbcc",
+                "on-error": "#ffffff",
+                "background": "#fcf8ff",
+                "on-background": "#1b1b24",
+                "inverse-primary": "#c3c0ff",
+                "success": "#22c55e",
+                "on-secondary-fixed-variant": "#005322",
+                "primary": "#3525cd",
+                "on-primary": "#ffffff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "margin-desktop": "32",
+                "gutter": "16px",
+                "margin-mobile": "16",
+                "base": "8"
+        },
+        "fontFamily": {
+                "label-md": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "section-label": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "section-label": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "15px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body {
+            background-color: #f5f2ff; /* surface-container-low */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Subtle background pattern for premium feel */
+        .bg-pattern {
+            background-image: radial-gradient(var(--tw-colors-primary-fixed) 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: -12px -12px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen relative overflow-x-hidden">
+<!-- SideNavBar Component -->
+<nav class="hidden md:flex bg-surface border-r border-outline fixed left-0 top-0 h-screen w-[260px] flex-col py-base z-50 min-h-screen" style="min-height: 100vh;">
+<div class="px-gutter mb-8 flex items-center gap-3 pt-4"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-lg overflow-hidden relative">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1IDbyx4N3igSBm4QYWX0OdjWWnNsGnZtg_UxbBHV1puX4ARrTwMulLp40F69_nxfsi-RD-ruUGEvLFbyPmPzaNKy0a-dmODBaBegPRQSa2J2vFO1TL_vX1_oLKym-N6oAI14ncX68-2lRASlKHctIF4CuJLI_fwH-fB-07wV_ZtfQ7byc9dUUDzeOCCFaM2F1wBryvyTvtGYa8ZTRjuLQhhikzbF-PxTB36-ESEOa13jpMKpReRsojx3qhFxGR27YjSARyH8q9r8">
+</div>
+<div>
+<h1 class="font-headline-lg text-[20px] leading-tight font-black text-primary">Naap Book</h1>
+<p class="font-label-md text-[12px] text-on-surface-variant">Management Portal</p>
+</div></div>
+<div class="px-gutter mb-6">
+<button class="w-full hover:bg-opacity-90 text-on-primary font-label-md text-label-md py-3 px-4 rounded-[10px] flex items-center justify-center gap-2 transition-all shadow-sm bg-primary border border-primary">
+<span class="material-symbols-outlined">search</span>
+            Search
+        </button>
+</div>
+<ul class="flex flex-col flex-grow px-2 gap-1 overflow-y-auto">
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">today</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_task">gallery_thumbnail</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pb-4">
+<div class="border-t border-outline my-2"></div>
+<div class="px-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopNavBar Component -->
+<header class="hidden md:flex bg-surface border-b border-outline fixed top-0 right-0 w-[calc(100%-260px)] h-16 justify-between items-center px-6 z-40 shadow-sm shadow-black/5">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-[22px] font-bold text-on-surface">Ramesh Tailoring Works</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-surface-variant overflow-hidden cursor-pointer border border-outline">
+<img alt="Tailor Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLyL9YH-HdTh8fia0_x6XO7oPW6gaVa-lCTU6y_6e4iInc05lQr8eQSLS5VJVUxODuWeX4By2wgXBvy9nurKXZjLRN6IOlLIZqDt8_kmjbqoXQKpkHnMOnrEz88fkaCLbFjyPV6eWVa7GjKk_FLH_9qEyFDu1PrzwyOanv1cnRvQDmu7IdBmUdf_tfYT2MKGCmmP9hyQ1jnbwq9OIBfLyUqiMSHft0eV9sH9CbybQTOGurUjQZcnGmBP-sZJJg0owTH9fQmvdaqsk">
+</div>
+</div>
+</header>
+<!-- Mobile Nav -->
+<header class="md:hidden flex bg-surface border-b border-outline fixed top-0 left-0 w-full h-16 justify-between items-center px-4 z-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 flex items-center justify-center overflow-hidden">
+<img alt="Shop Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhX1mzOBgEokOuORU6irXieR-TNfo7vX7ulKQ5kjffM_kCC69qTAfwPfkBeDzpQI-t0vxoOzfLxMyiT0DAs8rceMMoydldBECkvKqqxEwsMlTxsRqz7_Wl1lWNM8LneZsL2u0PrWryzqtTY_99-KIytySt4-AHmYtQYyWEYvfZUnbNfrjV8awSyGGpH1MXaL413nreiAKW1-iqm0iGojm4LLuyd2JiEm0k0PxvOMZpIxykYhg2NdyiY4qA">
+</div>
+<h2 class="font-headline-lg-mobile text-[18px] font-bold text-on-surface truncate max-w-[150px]">Naap Book</h2>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-md">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="md:ml-[260px] pt-20 md:pt-24 px-4 md:px-6 pb-24 md:pb-12 max-w-7xl mx-auto relative">
+<div class="absolute inset-0 bg-pattern opacity-30 pointer-events-none"></div>
+<div class="relative z-10 w-full">
+<!-- Page Header & Prominent Search -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-1">Customers Directory</h2>
+<p class="text-on-surface-variant text-body-md">Manage and connect with your clients</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-md text-label-md flex items-center gap-2 shadow-md hover:bg-primary-container hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                    New Customer
+                </button>
+</div>
+<!-- Enhanced Search / Filter Bar -->
+<div class="bg-surface/80 backdrop-blur-md p-4 rounded-xl border border-outline shadow-sm mb-8 flex flex-col sm:flex-row gap-4 items-center">
+<div class="relative flex-1 w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xl">search</span>
+<input class="w-full bg-surface-container-lowest pl-12 pr-4 py-3 rounded-lg border border-outline focus:border-primary focus:ring-1 focus:ring-primary text-body-md transition-all shadow-inner" placeholder="Search by name, phone, or location..." type="text">
+</div>
+<div class="flex gap-2 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 border border-outline rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors bg-surface">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                        Filters
+                    </button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-4 py-3 border border-outline rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-primary transition-colors bg-surface">
+<span class="material-symbols-outlined text-sm">sort</span>
+                        Sort
+                    </button>
+</div>
+</div>
+<!-- Customers Grid (Bento style cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Customer Card 1 -->
+<div class="bg-surface border border-outline rounded-xl p-5 hover:border-primary-fixed hover:shadow-lg transition-all duration-300 flex flex-col group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed rounded-bl-full opacity-20 -z-0 translate-x-12 -translate-y-12 group-hover:translate-x-4 group-hover:-translate-y-4 transition-transform duration-500"></div>
+<div class="flex items-start gap-4 mb-4 relative z-10">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary flex items-center justify-center font-bold text-lg shadow-sm border border-primary-fixed shrink-0">
+                            AK
+                        </div>
+<div class="flex-1 min-w-0">
+<h3 class="font-label-md text-label-md font-bold text-on-surface truncate">Aarav Kumar</h3>
+<p class="text-sm text-on-surface-variant truncate">VIP Client</p>
+<div class="flex items-center gap-1 mt-1 text-xs text-primary font-medium">
+<span class="w-2 h-2 rounded-full bg-success"></span> Active Order
+                            </div>
+</div>
+</div>
+<div class="space-y-2 mb-6 flex-1 relative z-10">
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">call</span>
+<span>+91 98765 43210</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">mail</span>
+<span class="truncate">aarav.k@email.com</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant relative z-10">
+<button class="flex-1 flex justify-center items-center py-2 bg-primary-fixed text-primary hover:bg-primary-fixed-dim rounded-lg transition-colors group/btn" title="Call">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">call</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group/btn" title="SMS">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">sms</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 rounded-lg transition-colors group/btn" title="WhatsApp Update">
+<svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</button>
+</div>
+</div>
+<!-- Customer Card 2 -->
+<div class="bg-surface border border-outline rounded-xl p-5 hover:border-primary-fixed hover:shadow-lg transition-all duration-300 flex flex-col group relative overflow-hidden">
+<div class="flex items-start gap-4 mb-4 relative z-10">
+<div class="w-12 h-12 rounded-full overflow-hidden border border-outline shrink-0">
+<img alt="Customer Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF0JnNcdU_e6RzDR5-sR7cm5Px-Rmj3roy5r_52o-c6qDaotQ7yH4HYT0oJW8--Ip-CKcvN5DM-78dvskDdCCxlEXMjoWr5yEMbQuZuKPmGyIoaeqNmiLaLrsL28D_4FVACKJzjBg8MZLsFcgrlgfQwmTrEx5s318fpcsWyiBdR381JjKc9HTSA-b071ehm1MVGqvGZZZv05ze_d3VMWLk3AzhqdPsxxDa_HAlMotl83YC6Z_t-v7wWNXnjWV9iZ1ZD-ksVOZSmQU">
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-label-md text-label-md font-bold text-on-surface truncate">Priya Sharma</h3>
+<p class="text-sm text-on-surface-variant truncate">Regular</p>
+<div class="flex items-center gap-1 mt-1 text-xs text-on-surface-variant font-medium">
+                                Last visit: 2 weeks ago
+                            </div>
+</div>
+</div>
+<div class="space-y-2 mb-6 flex-1 relative z-10">
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">call</span>
+<span>+91 98765 11223</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">location_on</span>
+<span class="truncate">Andheri West, Mumbai</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant relative z-10">
+<button class="flex-1 flex justify-center items-center py-2 bg-primary-fixed text-primary hover:bg-primary-fixed-dim rounded-lg transition-colors group/btn" title="Call">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">call</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group/btn" title="SMS">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">sms</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 rounded-lg transition-colors group/btn" title="WhatsApp Update">
+<svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</button>
+</div>
+</div>
+<!-- Customer Card 3 -->
+<div class="bg-surface border border-outline rounded-xl p-5 hover:border-primary-fixed hover:shadow-lg transition-all duration-300 flex flex-col group relative overflow-hidden opacity-80 hover:opacity-100">
+<div class="flex items-start gap-4 mb-4 relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-lg shrink-0">
+                            MR
+                        </div>
+<div class="flex-1 min-w-0">
+<h3 class="font-label-md text-label-md font-bold text-on-surface truncate">Mohammed Reza</h3>
+<p class="text-sm text-on-surface-variant truncate">New Client</p>
+<div class="flex items-center gap-1 mt-1 text-xs text-warning font-medium">
+<span class="material-symbols-outlined text-[14px]">pending_actions</span> Measurements Pending
+                            </div>
+</div>
+</div>
+<div class="space-y-2 mb-6 flex-1 relative z-10">
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">call</span>
+<span>+91 98765 99887</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant relative z-10">
+<button class="flex-1 flex justify-center items-center py-2 bg-primary-fixed text-primary hover:bg-primary-fixed-dim rounded-lg transition-colors group/btn" title="Call">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">call</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group/btn" title="SMS">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">sms</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 rounded-lg transition-colors group/btn" title="WhatsApp Update">
+<svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</button>
+</div>
+</div>
+<!-- Customer Card 4 -->
+<div class="bg-surface border border-outline rounded-xl p-5 hover:border-primary-fixed hover:shadow-lg transition-all duration-300 flex flex-col group relative overflow-hidden">
+<div class="flex items-start gap-4 mb-4 relative z-10">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-lg shrink-0">
+                            SN
+                        </div>
+<div class="flex-1 min-w-0">
+<h3 class="font-label-md text-label-md font-bold text-on-surface truncate">Sarah Newton</h3>
+<p class="text-sm text-on-surface-variant truncate">Corporate Account</p>
+</div>
+</div>
+<div class="space-y-2 mb-6 flex-1 relative z-10">
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">call</span>
+<span>+44 7700 900077</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-outline-variant">mail</span>
+<span class="truncate">s.newton@corp.co.uk</span>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant relative z-10">
+<button class="flex-1 flex justify-center items-center py-2 bg-primary-fixed text-primary hover:bg-primary-fixed-dim rounded-lg transition-colors group/btn" title="Call">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">call</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-surface-container text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors group/btn" title="SMS">
+<span class="material-symbols-outlined text-[20px] group-hover/btn:scale-110 transition-transform">sms</span>
+</button>
+<button class="flex-1 flex justify-center items-center py-2 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 rounded-lg transition-colors group/btn" title="WhatsApp Update">
+<svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-8 flex justify-center">
+<button class="px-6 py-2 border border-outline rounded-full text-primary font-label-md hover:bg-primary-fixed transition-colors">
+                    Load More Customers
+                </button>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,42 @@
+import {
+  DEFAULT_FONT_SIZE,
+  DEFAULT_SPACING,
+  type Theme,
+} from "../tokens";
+
+/** Stitch Naap Book (Refined) — WhiteTheme.md / naap_book_refined/DESIGN.md */
+export const minimalWhite: Theme = {
+  name: "minimal_white",
+  colors: {
+    background: "#FCF8FF",
+    surface: "#FFFFFF",
+    surfaceElevated: "#F5F2FF",
+    surfaceMuted: "#F0ECF9",
+    primary: "#4F46E5",
+    primaryText: "#FFFFFF",
+    secondary: "#006D2F",
+    secondaryMuted: "rgba(0, 109, 47, 0.1)",
+    text: "#111827",
+    textMuted: "#464555",
+    border: "#E5E7EB",
+    borderVariant: "#C7C4D8",
+    statusReceived: "#9CA3AF",
+    statusCutting: "#F59E0B",
+    statusStitching: "#3B82F6",
+    statusTrial: "#8B5CF6",
+    statusFinishing: "#0EA5E9",
+    statusReady: "#22C55E",
+    statusDelivered: "#22C55E",
+    statusCancelled: "#EF4444",
+    statusOverdue: "#DC2626",
+    accent: "#4F46E5",
+    accentMuted: "rgba(79, 70, 229, 0.12)",
+    success: "#22C55E",
+    warning: "#F59E0B",
+    danger: "#EF4444",
+    whatsappGreen: "#25D366",
+  },
+  spacing: { ...DEFAULT_SPACING },
+  radii: { sm: 6, md: 10, lg: 14, pill: 999 },
+  fontSize: { ...DEFAULT_FONT_SIZE },
+};

@@ -1,0 +1,434 @@
+<!DOCTYPE html><html class="h-full bg-background antialiased" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Naap Book - Calendar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#7e3000",
+                        "secondary-fixed": "#66ff8e",
+                        "secondary": "#006d2f",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "secondary-fixed-dim": "#3de273",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dcd8e5",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-surface": "#111827",
+                        "surface": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-container": "#dad7ff",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-fixed": "#002109",
+                        "warning": "#f59e0b",
+                        "secondary-container": "#5dfd8a",
+                        "background": "#fcf8ff",
+                        "surface-container-high": "#eae6f4",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "inverse-primary": "#c3c0ff",
+                        "info": "#3b82f6",
+                        "surface-container-low": "#f5f2ff",
+                        "surface-container-highest": "#e4e1ee",
+                        "surface-container": "#f0ecf9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#007232",
+                        "success": "#22c55e",
+                        "tertiary-container": "#a44100",
+                        "on-background": "#1b1b24",
+                        "inverse-surface": "#302f39",
+                        "on-primary-fixed": "#0f0069",
+                        "on-tertiary-container": "#ffd2be",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-tint": "#4d44e3",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface-variant": "#464555",
+                        "outline": "#e5e7eb",
+                        "surface-variant": "#e4e1ee",
+                        "error": "#ef4444",
+                        "inverse-on-surface": "#f3effc",
+                        "surface-bright": "#fcf8ff",
+                        "on-error-container": "#93000a",
+                        "primary": "#3525cd",
+                        "on-secondary-fixed-variant": "#005322",
+                        "tertiary-fixed-dim": "#ffb695"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8",
+                        "margin-desktop": "32",
+                        "gutter": "16px",
+                        "margin-mobile": "16"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "section-label": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "section-label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["15px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .calendar-grid {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+            }
+            .calendar-cell {
+                @apply border-b border-r border-outline relative min-h-[100px] p-2 hover:bg-surface-container-low transition-colors cursor-pointer;
+            }
+            .calendar-cell:nth-child(7n) {
+                @apply border-r-0;
+            }
+            .calendar-row:last-child .calendar-cell {
+                @apply border-b-0;
+            }
+            .calendar-cell.inactive-month {
+                @apply bg-surface-container text-on-surface-variant/50;
+            }
+            .calendar-cell.active-date {
+                @apply bg-primary-container/10 ring-2 ring-primary ring-inset z-10;
+            }
+            .calendar-header-cell {
+                @apply text-center py-4 font-label-md text-on-surface-variant border-b border-outline;
+            }
+        }
+        body {
+            background-color: #f5f2ff; /* Using surface-container-low from theme to match */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface border-r border-outline fixed left-0 top-0 h-screen w-[260px] flex-col py-base z-50 min-h-screen" style="min-height: 100vh;"><div class="px-gutter mb-8 flex items-center gap-3 pt-4">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-lg overflow-hidden relative">
+<img alt="Shop Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1IDbyx4N3igSBm4QYWX0OdjWWnNsGnZtg_UxbBHV1puX4ARrTwMulLp40F69_nxfsi-RD-ruUGEvLFbyPmPzaNKy0a-dmODBaBegPRQSa2J2vFO1TL_vX1_oLKym-N6oAI14ncX68-2lRASlKHctIF4CuJLI_fwH-fB-07wV_ZtfQ7byc9dUUDzeOCCFaM2F1wBryvyTvtGYa8ZTRjuLQhhikzbF-PxTB36-ESEOa13jpMKpReRsojx3qhFxGR27YjSARyH8q9r8">
+</div>
+<div>
+<h1 class="font-headline-lg text-[20px] leading-tight font-black text-primary">Naap Book</h1>
+<p class="font-label-md text-[12px] text-on-surface-variant">Management Portal</p>
+</div>
+</div>
+<div class="px-gutter mb-6">
+<button class="w-full hover:bg-opacity-90 text-on-primary font-label-md text-label-md py-3 px-4 rounded-[10px] flex items-center justify-center gap-2 transition-all shadow-sm bg-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">search</span>
+            Search</button>
+</div>
+<ul class="flex flex-col flex-grow px-2 gap-1 overflow-y-auto">
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_task">photo_library</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month" style="font-variation-settings: &quot;FILL&quot; 1;">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</li>
+</ul><div class="mt-auto pb-4">
+<div class="border-t border-outline my-2"></div>
+<div class="px-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</div></nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex bg-surface border-b border-outline fixed top-0 right-0 w-[calc(100%-260px)] h-16 justify-between items-center px-6 z-40 shadow-sm shadow-black/5">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-[22px] font-bold text-on-surface">Calendar</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-surface-variant overflow-hidden cursor-pointer border border-outline ring-2 ring-transparent hover:ring-primary transition-all">
+<img alt="Tailor Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional male tailor in his 30s with a neat beard, wearing a tailored navy suit jacket over a crisp white shirt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFFMfj4OsfiSGpEqIFJ7grsyWY_7nyZFLQLmi4_mnhYdNUwWo0tp0tIgjSTkKfU1t15YuVmxcQqw3H0movttNT9Oatd086BD7TEwhmwnQRqQKJoaViT-H3OkhRDztwXn3zw8DGsCuGdFDX6Vu7VY7xHzTRZFXFkIuNoNGcTslgfi5J-SQxTtfE3d0uOmsbGK6TViUU9gitdW0xojVxK1py0y5YBhaTzflPnDLAoSkqzmKu3nYXXdSq87U8EKj5_zXn4D4Hyjnkncg">
+</div>
+</div>
+</header>
+<!-- Mobile Nav -->
+<header class="md:hidden flex bg-surface border-b border-outline fixed top-0 left-0 w-full h-16 justify-between items-center px-4 z-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-primary font-bold text-sm overflow-hidden border border-outline">
+<img alt="Naap Book Logo" class="w-5 h-5 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhX1mzOBgEokOuORU6irXieR-TNfo7vX7ulKQ5kjffM_kCC69qTAfwPfkBeDzpQI-t0vxoOzfLxMyiT0DAs8rceMMoydldBECkvKqqxEwsMlTxsRqz7_Wl1lWNM8LneZsL2u0PrWryzqtTY_99-KIytySt4-AHmYtQYyWEYvfZUnbNfrjV8awSyGGpH1MXaL413nreiAKW1-iqm0iGojm4LLuyd2JiEm0k0PxvOMZpIxykYhg2NdyiY4qA">
+</div>
+<h2 class="font-headline-lg-mobile text-[18px] font-bold text-on-surface truncate max-w-[150px]">Naap Book</h2>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-md">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="md:ml-[260px] pt-20 md:pt-24 px-4 md:px-6 pb-24 md:pb-12 max-w-7xl mx-auto">
+<div class="w-full space-y-8">
+<!-- Calendar Card -->
+<div class="bg-surface rounded-[14px] border border-outline shadow-sm overflow-hidden">
+<!-- Calendar Header Controls -->
+<div class="flex items-center justify-between p-6 md:p-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">May 2023</h2>
+<div class="flex gap-2">
+<button class="p-2 text-outline-variant hover:text-on-surface transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined font-bold">chevron_left</span>
+</button>
+<button class="p-2 text-on-surface hover:text-primary transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined font-bold">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="border-t border-outline">
+<div class="calendar-grid bg-surface">
+<!-- Header Row -->
+<div class="calendar-header-cell">Mo</div>
+<div class="calendar-header-cell">Tu</div>
+<div class="calendar-header-cell">We</div>
+<div class="calendar-header-cell">Th</div>
+<div class="calendar-header-cell">Fr</div>
+<div class="calendar-header-cell">Sa</div>
+<div class="calendar-header-cell">Su</div>
+<!-- Week 1 -->
+<div class="calendar-grid col-span-7 border-b border-outline">
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">1</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">2</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">3</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">4</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">5</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">6</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">7</span>
+</div>
+</div>
+<!-- Week 2 -->
+<div class="calendar-grid col-span-7 border-b border-outline">
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">8</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">9</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">10</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">11</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">12</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">13</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">14</span>
+</div>
+</div>
+<!-- Week 3 -->
+<div class="calendar-grid col-span-7 border-b border-outline">
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">15</span>
+</div>
+<div class="calendar-cell active-date">
+<span class="font-label-md text-label-md font-bold text-primary">16</span>
+<div class="mt-2 flex flex-wrap gap-1">
+<div class="w-2 h-2 rounded-full bg-success"></div>
+<div class="w-2 h-2 rounded-full bg-warning"></div>
+</div>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">17</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">18</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">19</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">20</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">21</span>
+</div>
+</div>
+<!-- Week 4 -->
+<div class="calendar-grid col-span-7 border-b border-outline">
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">22</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">23</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">24</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">25</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">26</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">27</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">28</span>
+</div>
+</div>
+<!-- Week 5 -->
+<div class="calendar-grid col-span-7">
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">29</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">30</span>
+</div>
+<div class="calendar-cell">
+<span class="font-label-md text-label-md">31</span>
+</div>
+<div class="calendar-cell inactive-month">
+<span class="font-label-md text-label-md">1</span>
+</div>
+<div class="calendar-cell inactive-month">
+<span class="font-label-md text-label-md">2</span>
+</div>
+<div class="calendar-cell inactive-month">
+<span class="font-label-md text-label-md">3</span>
+</div>
+<div class="calendar-cell inactive-month">
+<span class="font-label-md text-label-md">4</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Deliveries Section -->
+<div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6 flex items-center gap-2">
+                        Deliveries for May 16
+                        <span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md text-sm">2 Jobs</span>
+</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Job Card 1 -->
+<div class="bg-surface rounded-[14px] border border-outline p-5 hover:border-primary-fixed transition-colors shadow-sm group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2.5 h-2.5 rounded-full bg-success"></span>
+<span class="font-section-label text-section-label text-success tracking-widest uppercase">Ready</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface text-lg font-semibold">Mens Three-Piece Suit</h4>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant text-sm">#NB-8842</span>
+</div>
+<div class="flex items-center gap-3 mb-5 p-3 rounded-lg bg-surface-container-low">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+                                    JD
+                                </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">John Doe</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Premium Customer</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-primary-fixed-dim transition-colors group-hover:underline" href="#">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<!-- Job Card 2 -->
+<div class="bg-surface rounded-[14px] border border-outline p-5 hover:border-primary-fixed transition-colors shadow-sm group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2.5 h-2.5 rounded-full bg-warning"></span>
+<span class="font-section-label text-section-label text-warning tracking-widest uppercase">Fitting</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface text-lg font-semibold">Silk Evening Gown</h4>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant text-sm">#NB-8845</span>
+</div>
+<div class="flex items-center gap-3 mb-5 p-3 rounded-lg bg-surface-container-low">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold">
+                                    AS
+                                </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Alice Smith</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">New Customer</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary hover:text-primary-fixed-dim transition-colors group-hover:underline" href="#">
+                                View Details
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

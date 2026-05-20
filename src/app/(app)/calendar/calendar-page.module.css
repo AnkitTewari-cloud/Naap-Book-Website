@@ -1,0 +1,138 @@
+.page {
+  padding: var(--page-padding-y) var(--page-padding-x);
+  padding-bottom: var(--page-padding-bottom);
+  position: relative;
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.calendarCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .calendarHeader {
+    padding: var(--spacing-xl);
+  }
+}
+
+.monthTitle {
+  margin: 0;
+  font-size: var(--page-title-size);
+  font-weight: 800;
+  line-height: 2.25rem;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+.monthNav {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.navBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-border-variant, var(--color-text-muted));
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.navBtn:hover {
+  color: var(--color-text);
+  background: var(--color-surface-muted, var(--color-surface-elevated));
+}
+
+.navBtnNext {
+  color: var(--color-text);
+}
+
+.navBtnNext:hover {
+  color: var(--color-primary);
+}
+
+.calendarBody {
+  border-top: 1px solid var(--color-border);
+}
+
+.deliveriesSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: 0 0 var(--spacing-lg);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  line-height: 2rem;
+  color: var(--color-text);
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-container-high, var(--color-surface-elevated));
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.muted {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+}

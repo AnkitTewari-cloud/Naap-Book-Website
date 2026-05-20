@@ -1,0 +1,332 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Today's Deliveries - Naap Book</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#7e3000",
+                      "secondary-fixed": "#66ff8e",
+                      "secondary": "#006d2f",
+                      "primary-container": "#4f46e5",
+                      "on-tertiary-fixed-variant": "#7b2f00",
+                      "secondary-fixed-dim": "#3de273",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#dcd8e5",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#351000",
+                      "on-surface": "#111827",
+                      "surface": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed": "#ffdbcc",
+                      "on-primary-container": "#dad7ff",
+                      "primary-fixed": "#e2dfff",
+                      "on-secondary-fixed": "#002109",
+                      "warning": "#f59e0b",
+                      "secondary-container": "#5dfd8a",
+                      "background": "#fcf8ff",
+                      "surface-container-high": "#eae6f4",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "inverse-primary": "#c3c0ff",
+                      "info": "#3b82f6",
+                      "surface-container-low": "#f5f2ff",
+                      "surface-container-highest": "#e4e1ee",
+                      "surface-container": "#f9fafb",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#007232",
+                      "success": "#22c55e",
+                      "tertiary-container": "#a44100",
+                      "on-background": "#1b1b24",
+                      "inverse-surface": "#302f39",
+                      "on-primary-fixed": "#0f0069",
+                      "on-tertiary-container": "#ffd2be",
+                      "on-primary-fixed-variant": "#3323cc",
+                      "surface-tint": "#4d44e3",
+                      "outline-variant": "#c7c4d8",
+                      "on-surface-variant": "#464555",
+                      "outline": "#e5e7eb",
+                      "surface-variant": "#e4e1ee",
+                      "error": "#ef4444",
+                      "inverse-on-surface": "#f3effc",
+                      "surface-bright": "#fcf8ff",
+                      "on-error-container": "#93000a",
+                      "primary": "#3525cd",
+                      "on-secondary-fixed-variant": "#005322",
+                      "tertiary-fixed-dim": "#ffb695"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Inter", "sans-serif"],
+                      "section-label": ["Inter", "sans-serif"],
+                      "label-md": ["Inter", "sans-serif"],
+                      "headline-lg": ["Inter", "sans-serif"],
+                      "body-md": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "section-label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["15px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f2ff; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface border-r border-outline fixed left-0 top-0 h-screen w-[260px] flex-col py-base z-50 min-h-screen">
+<div class="px-gutter mb-8 flex items-center gap-3 pt-4"><div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-lg overflow-hidden relative">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1IDbyx4N3igSBm4QYWX0OdjWWnNsGnZtg_UxbBHV1puX4ARrTwMulLp40F69_nxfsi-RD-ruUGEvLFbyPmPzaNKy0a-dmODBaBegPRQSa2J2vFO1TL_vX1_oLKym-N6oAI14ncX68-2lRASlKHctIF4CuJLI_fwH-fB-07wV_ZtfQ7byc9dUUDzeOCCFaM2F1wBryvyTvtGYa8ZTRjuLQhhikzbF-PxTB36-ESEOa13jpMKpReRsojx3qhFxGR27YjSARyH8q9r8">
+</div>
+<div>
+<h1 class="font-headline-lg text-[20px] leading-tight font-black text-primary">Naap Book</h1>
+<p class="font-label-md text-[12px] text-on-surface-variant">Management Portal</p>
+</div></div>
+<div class="px-gutter mb-6">
+<button class="w-full hover:bg-opacity-90 text-on-primary font-label-md text-label-md py-3 px-4 rounded-[10px] flex items-center justify-center gap-2 transition-all shadow-sm bg-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">search</span>
+            Search
+        </button>
+</div>
+<ul class="flex flex-col flex-grow px-2 gap-1 overflow-y-auto">
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available" style="font-variation-settings: &quot;FILL&quot; 1;">event_available</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_task">photo_library</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pb-4">
+<div class="border-t border-outline my-2"></div>
+<div class="px-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex bg-surface border-b border-outline fixed top-0 right-0 w-[calc(100%-260px)] h-16 justify-between items-center px-6 z-40 shadow-sm shadow-black/5">
+<div class="flex items-center text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">search</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-surface-variant overflow-hidden cursor-pointer border border-outline flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-size: 20px;">person</span>
+</div>
+</div>
+</header>
+<!-- Mobile Nav -->
+<header class="md:hidden flex bg-surface border-b border-outline fixed top-0 left-0 w-full h-16 justify-between items-center px-4 z-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm overflow-hidden">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida/ADBb0uhX1mzOBgEokOuORU6irXieR-TNfo7vX7ulKQ5kjffM_kCC69qTAfwPfkBeDzpQI-t0vxoOzfLxMyiT0DAs8rceMMoydldBECkvKqqxEwsMlTxsRqz7_Wl1lWNM8LneZsL2u0PrWryzqtTY_99-KIytySt4-AHmYtQYyWEYvfZUnbNfrjV8awSyGGpH1MXaL413nreiAKW1-iqm0iGojm4LLuyd2JiEm0k0PxvOMZpIxykYhg2NdyiY4qA">
+</div>
+<h2 class="font-headline-lg-mobile text-[18px] font-bold text-on-surface truncate max-w-[150px]">Naap Book</h2>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-md">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-[260px] pt-20 md:pt-24 px-4 md:px-6 pb-24 md:pb-12 max-w-7xl mx-auto w-full">
+<!-- Page Header -->
+<div class="flex items-center gap-3 mb-8">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined" style="font-size: 28px;">checkroom</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Today's Deliveries</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage jobs scheduled for pickup today.</p>
+</div>
+</div>
+<!-- Job Cards Grid (Status-first arrangement) -->
+<!-- Filter Bar -->
+<div class="flex flex-wrap items-center gap-4 mb-6 bg-surface p-4 rounded-xl border border-outline">
+<span class="font-label-md text-label-md text-on-surface-variant">Filter by Status:</span>
+<div class="flex items-center gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-primary" type="checkbox">
+<span class="font-label-md text-label-md">Ready</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-primary" type="checkbox">
+<span class="font-label-md text-label-md">Pending</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded border-outline text-primary focus:ring-primary" type="checkbox">
+<span class="font-label-md text-label-md">Delayed</span>
+</label>
+</div>
+</div>
+<!-- List View -->
+<div class="space-y-3">
+<!-- Row 1: Ready -->
+<div class="bg-success/5 border-l-4 border-l-success border-y border-r border-outline rounded-lg p-4 flex flex-col md:flex-row md:items-center gap-4 hover:bg-success/10 transition-colors">
+<div class="flex-shrink-0 w-24">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-success text-on-primary font-section-label text-[10px] uppercase tracking-wider w-full text-center">Ready</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline gap-2">
+<h3 class="font-label-md text-label-md text-on-surface">Eleanor Vance</h3>
+<span class="text-[12px] text-primary font-medium">#NB-842</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Bespoke Evening Gown</p>
+</div>
+<div class="flex items-center gap-2 mt-2 md:mt-0">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-success/30 text-success font-label-md text-[13px] hover:bg-success hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+            </button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline text-on-surface-variant font-label-md text-[13px] hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[18px]">sms</span> SMS
+            </button>
+</div>
+</div>
+<!-- Row 2: Fitting (Pending) -->
+<div class="bg-warning/5 border-l-4 border-l-warning border-y border-r border-outline rounded-lg p-4 flex flex-col md:flex-row md:items-center gap-4 hover:bg-warning/10 transition-colors">
+<div class="flex-shrink-0 w-24">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-warning text-on-primary font-section-label text-[10px] uppercase tracking-wider w-full text-center">Fitting</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline gap-2">
+<h3 class="font-label-md text-label-md text-on-surface">Arthur Pendelton</h3>
+<span class="text-[12px] text-primary font-medium">#NB-845</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">3-Piece Worsted Suit</p>
+</div>
+<div class="flex items-center gap-2 mt-2 md:mt-0">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-success/30 text-success font-label-md text-[13px] hover:bg-success hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+            </button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline text-on-surface-variant font-label-md text-[13px] hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[18px]">sms</span> SMS
+            </button>
+</div>
+</div>
+<!-- Row 3: Delayed -->
+<div class="bg-error/5 border-l-4 border-l-error border-y border-r border-outline rounded-lg p-4 flex flex-col md:flex-row md:items-center gap-4 hover:bg-error/10 transition-colors">
+<div class="flex-shrink-0 w-24">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-error text-on-primary font-section-label text-[10px] uppercase tracking-wider w-full text-center">Delayed</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline gap-2">
+<h3 class="font-label-md text-label-md text-on-surface">Sophia Sterling</h3>
+<span class="text-[12px] text-primary font-medium">#NB-839</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Silk Blouse Alteration</p>
+</div>
+<div class="flex items-center gap-2 mt-2 md:mt-0">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-success/30 text-success font-label-md text-[13px] hover:bg-success hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+            </button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline text-on-surface-variant font-label-md text-[13px] hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[18px]">sms</span> SMS
+            </button>
+</div>
+</div>
+<!-- Row 4: Ready -->
+<div class="bg-success/5 border-l-4 border-l-success border-y border-r border-outline rounded-lg p-4 flex flex-col md:flex-row md:items-center gap-4 hover:bg-success/10 transition-colors">
+<div class="flex-shrink-0 w-24">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-success text-on-primary font-section-label text-[10px] uppercase tracking-wider w-full text-center">Ready</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline gap-2">
+<h3 class="font-label-md text-label-md text-on-surface">Marcus Chen</h3>
+<span class="text-[12px] text-primary font-medium">#NB-848</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Tweed Blazer</p>
+</div>
+<div class="flex items-center gap-2 mt-2 md:mt-0">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-success/30 text-success font-label-md text-[13px] hover:bg-success hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+            </button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline text-on-surface-variant font-label-md text-[13px] hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[18px]">sms</span> SMS
+            </button>
+</div>
+</div>
+<!-- Row 5: Pressing (Pending) -->
+<div class="bg-warning/5 border-l-4 border-l-warning border-y border-r border-outline rounded-lg p-4 flex flex-col md:flex-row md:items-center gap-4 hover:bg-warning/10 transition-colors">
+<div class="flex-shrink-0 w-24">
+<span class="inline-flex items-center justify-center px-2 py-1 rounded-full bg-warning text-on-primary font-section-label text-[10px] uppercase tracking-wider w-full text-center">Pressing</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline gap-2">
+<h3 class="font-label-md text-label-md text-on-surface">Clara Hughes</h3>
+<span class="text-[12px] text-primary font-medium">#NB-850</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Summer Dress Hemming</p>
+</div>
+<div class="flex items-center gap-2 mt-2 md:mt-0">
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-success/30 text-success font-label-md text-[13px] hover:bg-success hover:text-white transition-all">
+<span class="material-symbols-outlined text-[18px]">chat</span> WhatsApp
+            </button>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-outline text-on-surface-variant font-label-md text-[13px] hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-[18px]">sms</span> SMS
+            </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

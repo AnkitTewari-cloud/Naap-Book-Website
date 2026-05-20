@@ -1,0 +1,17 @@
+.banner {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: var(--spacing-sm) var(--page-padding-x);
+  text-align: center;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--color-warning) 18%, var(--color-surface));
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}

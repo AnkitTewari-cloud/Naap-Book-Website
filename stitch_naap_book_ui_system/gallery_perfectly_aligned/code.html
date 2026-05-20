@@ -1,0 +1,337 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Naap Book - Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f5f2ff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#7e3000",
+                        "secondary-fixed": "#66ff8e",
+                        "secondary": "#006d2f",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "secondary-fixed-dim": "#3de273",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dcd8e5",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#351000",
+                        "on-surface": "#111827",
+                        "surface": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "on-primary-container": "#dad7ff",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-fixed": "#002109",
+                        "warning": "#f59e0b",
+                        "secondary-container": "#5dfd8a",
+                        "background": "#fcf8ff",
+                        "surface-container-high": "#eae6f4",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "inverse-primary": "#c3c0ff",
+                        "info": "#3b82f6",
+                        "surface-container-low": "#f5f2ff",
+                        "surface-container-highest": "#e4e1ee",
+                        "surface-container": "#f0ecf9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#007232",
+                        "success": "#22c55e",
+                        "tertiary-container": "#a44100",
+                        "on-background": "#1b1b24",
+                        "inverse-surface": "#302f39",
+                        "on-primary-fixed": "#0f0069",
+                        "on-tertiary-container": "#ffd2be",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "surface-tint": "#4d44e3",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface-variant": "#464555",
+                        "outline": "#e5e7eb",
+                        "surface-variant": "#e4e1ee",
+                        "error": "#ef4444",
+                        "inverse-on-surface": "#f3effc",
+                        "surface-bright": "#fcf8ff",
+                        "on-error-container": "#93000a",
+                        "primary": "#3525cd",
+                        "on-secondary-fixed-variant": "#005322",
+                        "tertiary-fixed-dim": "#ffb695"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8",
+                        "margin-desktop": "32",
+                        "gutter": "16px",
+                        "margin-mobile": "16"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "section-label": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "section-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface border-r border-outline fixed left-0 top-0 h-screen w-[260px] flex-col py-base z-50 min-h-screen" style="min-height: 100vh;">
+<div class="px-gutter mb-8 flex items-center gap-3 pt-4">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-lg overflow-hidden relative">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1IDbyx4N3igSBm4QYWX0OdjWWnNsGnZtg_UxbBHV1puX4ARrTwMulLp40F69_nxfsi-RD-ruUGEvLFbyPmPzaNKy0a-dmODBaBegPRQSa2J2vFO1TL_vX1_oLKym-N6oAI14ncX68-2lRASlKHctIF4CuJLI_fwH-fB-07wV_ZtfQ7byc9dUUDzeOCCFaM2F1wBryvyTvtGYa8ZTRjuLQhhikzbF-PxTB36-ESEOa13jpMKpReRsojx3qhFxGR27YjSARyH8q9r8">
+</div>
+<div>
+<h1 class="font-headline-lg text-[20px] leading-tight font-black text-primary">Naap Book</h1>
+<p class="font-label-md text-[12px] text-on-surface-variant">Management Portal</p>
+</div>
+</div>
+<div class="px-gutter mb-6">
+<button class="w-full hover:bg-opacity-90 text-on-primary font-label-md text-label-md py-3 px-4 rounded-[10px] flex items-center justify-center gap-2 transition-all shadow-sm bg-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">search</span>
+            Search</button>
+</div>
+<ul class="flex flex-col flex-grow px-2 gap-1 overflow-y-auto">
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_task" style="font-variation-settings: &quot;FILL&quot; 1;">photo_library</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</li>
+</ul><div class="mt-auto pb-4">
+<div class="border-t border-outline my-2"></div>
+<div class="px-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex bg-surface border-b border-outline fixed top-0 right-0 w-[calc(100%-260px)] h-16 justify-between items-center px-6 z-40 shadow-sm shadow-black/5">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<img alt="Thread Spool" class="w-6 h-6 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhX1mzOBgEokOuORU6irXieR-TNfo7vX7ulKQ5kjffM_kCC69qTAfwPfkBeDzpQI-t0vxoOzfLxMyiT0DAs8rceMMoydldBECkvKqqxEwsMlTxsRqz7_Wl1lWNM8LneZsL2u0PrWryzqtTY_99-KIytySt4-AHmYtQYyWEYvfZUnbNfrjV8awSyGGpH1MXaL413nreiAKW1-iqm0iGojm4LLuyd2JiEm0k0PxvOMZpIxykYhg2NdyiY4qA">
+<h2 class="font-headline-lg text-[22px] font-bold text-on-surface">Gallery</h2>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-6 w-px bg-outline mx-1"></div>
+<div class="w-9 h-9 rounded-full bg-surface-variant overflow-hidden cursor-pointer border border-outline">
+<img alt="Tailor Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX_jHL8UOYCwAsKpRBycQPsvOy6TbRna-UfpaHNx0IXZsK4N0iAmYs_utfQcl05CiKtnLg3A9CYgS1Jfqe1lVqGSrHe9Tuv4kNoVh-DUnrBaKKpSGDQz1EXWWKVmGrQBewJrwEdBehhMD7e0KNgigzkXgaQiaQGf4-3FJrMpF6Fp2UlqF7xJEcadpzgt5pnMlsAXsW3abr0rOjZjHsvk5FUemWuN5x5-mnfkbjNIUr1UhJ0u-fI_63g60KlxttCw-rDFpjn0-jb4o">
+</div>
+</div>
+</header>
+<!-- Mobile Nav -->
+<header class="md:hidden flex bg-surface border-b border-outline fixed top-0 left-0 w-full h-16 justify-between items-center px-4 z-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full flex items-center justify-center text-on-primary font-bold text-sm overflow-hidden">
+<img alt="Shop Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0uhX1mzOBgEokOuORU6irXieR-TNfo7vX7ulKQ5kjffM_kCC69qTAfwPfkBeDzpQI-t0vxoOzfLxMyiT0DAs8rceMMoydldBECkvKqqxEwsMlTxsRqz7_Wl1lWNM8LneZsL2u0PrWryzqtTY_99-KIytySt4-AHmYtQYyWEYvfZUnbNfrjV8awSyGGpH1MXaL413nreiAKW1-iqm0iGojm4LLuyd2JiEm0k0PxvOMZpIxykYhg2NdyiY4qA">
+</div>
+<h2 class="font-headline-lg-mobile text-[18px] font-bold text-on-surface truncate max-w-[150px]">Naap Book</h2>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-md">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="md:ml-[260px] pt-20 md:pt-24 px-4 md:px-6 pb-24 md:pb-12 max-w-7xl mx-auto">
+<div class="w-full">
+<!-- Header & Tabs -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Gallery</h2>
+<p class="text-on-surface-variant mt-2 max-w-2xl text-body-md">Manage and showcase your finished garments and reference photos.</p>
+</div>
+<div class="flex bg-surface-container rounded-lg p-1 border border-outline-variant inline-flex">
+<button class="px-6 py-2 rounded-md bg-surface text-primary shadow-sm font-label-md text-label-md transition-all">
+                        Shop Gallery
+                    </button>
+<button class="px-6 py-2 rounded-md text-on-surface-variant hover:text-on-surface font-label-md text-label-md transition-all">
+                        Customer Gallery
+                    </button>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex justify-between items-center mb-6">
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline rounded-[10px] text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline rounded-[10px] text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+                        Sort by: Newest
+                    </button>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-on-primary rounded-[10px] font-label-md text-label-md hover:opacity-90 transition-colors shadow-md">
+<span class="material-symbols-outlined text-[20px]">add_photo_alternate</span>
+                    Upload Photo
+                </button>
+</div>
+<!-- Image Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group flex flex-col bg-surface rounded-[14px] overflow-hidden border border-outline hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional studio photograph of a bespoke navy blue men's suit jacket displayed on a high-end wooden dress form." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEx7-Z_yWf3dNyiigQkefNWn1PmEkfVTH8Qu4GPAPdjhNMfx-HZpWG328PABGjkIjyJqF7GJiemCJY-NRjdzaqwZ2j9OAzeNFcp1gGwNggBGC6-u_RC_zKG7q0fVvwfTUBLx9CRW_BXmkOhjA50TJisARZRK2Q3Oa6UU-aoUyehk34N2geBypGXdexAMoiPIrNgWPZRysGd8Pmg95eIliKW7utRrRBgTWLOsdnmsNb4C68NQNcN--jFm9qqfFGEQ39W2PSYuxev2A">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface font-semibold truncate">Navy Two-Piece Suit</h3>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[11px] font-semibold text-on-surface-variant tracking-wide">SUIT</span>
+</div>
+<p class="text-[13px] text-on-surface-variant">Client: Marcus J.</p>
+<p class="text-[12px] text-outline-variant mt-1">Oct 12, 2023</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col bg-surface rounded-[14px] overflow-hidden border border-outline hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up detail shot of the cuff and sleeve buttons on a custom-tailored grey tweed blazer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgcHZOstvyWG4yfCeilJ-sShPSrD3r5o4HCdaAWiYIUEKdvfpfcJ9Jh8TH4Tpvjb63Ppdeq2Zbzgeb1lAcDkhao_B22dtbO5UKlg3l6snybJzbBjLiutHeE0RNBH3w2Du4gdpvyR-fCSZNzT4xjGeHIzFQ-aUcfb1pXWw0RgbegcBXzt_jskMc_7DY_qpskJwNLDPLgfM2a-v-qG6atnOts6gausBYSxd2AWyyqZNpfzJEQySxdQURS2bmE4BBmmMH-87em0H3cqk">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface font-semibold truncate">Tweed Blazer Detail</h3>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[11px] font-semibold text-on-surface-variant tracking-wide">JACKET</span>
+</div>
+<p class="text-[13px] text-on-surface-variant">Client: Sarah W.</p>
+<p class="text-[12px] text-outline-variant mt-1">Oct 10, 2023</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col bg-surface rounded-[14px] overflow-hidden border border-outline hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An elegant, custom-tailored emerald green evening gown showcased in a brightly lit modern atelier." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBVDV5F9eeBTxjG0l03Fbrul_z2I6_V-3963OVIqOFtbUjuv-XKNmmfdrcBtMbK4gujG15NDKxEB9oiI-yH4Gu2VZzRVgyeEY2W2cDHAFqpVFL6BIGQVHvVhE2MEp9V_HP-b9sNd2arTvuN5GhMahXrUsg3qZ5gJqwqEXYs2PslS9g524u3aMUwi3AhA2kTuj5scByOlPwm-OSwHHh7-ujQ_BVhnzxHOSf_dzuwvNCOK8O_rrygJMEo8eplfHnKBzHz3QNCdY2NWY">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface font-semibold truncate">Emerald Silk Gown</h3>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[11px] font-semibold text-on-surface-variant tracking-wide">DRESS</span>
+</div>
+<p class="text-[13px] text-on-surface-variant">Client: Elena R.</p>
+<p class="text-[12px] text-outline-variant mt-1">Oct 05, 2023</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col bg-surface rounded-[14px] overflow-hidden border border-outline hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-all duration-300">
+<div class="relative aspect-[3/4] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Crisp, perfectly ironed white cotton dress shirts hanging in a neat row on a brushed metal clothing rack." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZmzPYzNHFIlPMQElZCcLHDJJM0GHrZ0ga95ikVTC5tl0wyutn5UA_RmPi-WURj37lL7mkAwnLiTt3VI1VCNiLem0YNYDj8L22E_5762OR-tC0wmQqMQ8rcD1_2S3KYh98kJB4KB2hWNjhmIRt0-d_ORYDGaNNbqNwpXZOaTjSa4LkhdQ7oyrC2IiJwwUhpT647s-3pqbs-f0_Kk2apffvHLgd9qQmLaIFs-0rS7VW0Hds0Q67D1KKmzUbXDpp18gKQZm97gUdxjQ">
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface/20 backdrop-blur-sm text-white flex items-center justify-center hover:bg-surface/40 transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-1">
+<div class="flex justify-between items-start">
+<h3 class="font-label-md text-label-md text-on-surface font-semibold truncate">Oxford Cotton Shirts</h3>
+<span class="bg-surface-container px-2 py-0.5 rounded text-[11px] font-semibold text-on-surface-variant tracking-wide">SHIRT</span>
+</div>
+<p class="text-[13px] text-on-surface-variant">Batch: Corporate Order</p>
+<p class="text-[12px] text-outline-variant mt-1">Sep 28, 2023</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

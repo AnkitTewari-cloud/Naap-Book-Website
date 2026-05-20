@@ -1,0 +1,172 @@
+.card {
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-primary-fixed-dim, var(--color-primary));
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-md);
+}
+
+.topMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: 4px;
+}
+
+.statusDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.statusLabel {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.status_ready,
+.status_delivered {
+  color: var(--color-success);
+}
+
+.status_ready .statusDot,
+.status_delivered .statusDot {
+  background: var(--color-success);
+}
+
+.status_stitching,
+.status_cutting,
+.status_finishing,
+.status_trial {
+  color: var(--color-warning);
+}
+
+.status_stitching .statusDot,
+.status_cutting .statusDot,
+.status_finishing .statusDot,
+.status_trial .statusDot {
+  background: var(--color-warning);
+}
+
+.status_received {
+  color: var(--color-primary);
+}
+
+.status_received .statusDot {
+  background: var(--color-primary);
+}
+
+.status_cancelled {
+  color: var(--color-danger);
+}
+
+.status_cancelled .statusDot {
+  background: var(--color-danger);
+}
+
+.garmentTitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  line-height: 1.5rem;
+  color: var(--color-text);
+}
+
+.ref {
+  flex-shrink: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  line-height: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.customerBlock {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: 20px;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  background: var(
+    --color-surface-container-low,
+    var(--color-surface-elevated, var(--color-background))
+  );
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+.avatarPrimary {
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+}
+
+.avatarAccent {
+  background: var(--color-tertiary-container, #a44100);
+  color: var(--color-on-tertiary-container, #ffd2be);
+}
+
+.customerName {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--color-text);
+}
+
+.customerMeta {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: 1.5rem;
+  color: var(--color-text-muted);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  line-height: 1.25rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-primary-fixed-dim, var(--color-accent));
+  text-decoration: underline;
+}
+
+.card:hover .link {
+  text-decoration: underline;
+}

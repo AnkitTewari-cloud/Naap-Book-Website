@@ -1,0 +1,467 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Naap Book - Advanced Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "on-error": "#ffffff",
+                "surface": "#ffffff",
+                "secondary-fixed-dim": "#3de273",
+                "on-primary-fixed": "#0f0069",
+                "primary-container": "#4f46e5",
+                "tertiary-fixed-dim": "#ffb695",
+                "surface-container-highest": "#e4e1ee",
+                "surface-container": "#f9fafb",
+                "surface-tint": "#4d44e3",
+                "on-tertiary-fixed": "#351000",
+                "on-primary-fixed-variant": "#3323cc",
+                "on-error-container": "#93000a",
+                "error": "#ef4444",
+                "on-primary-container": "#dad7ff",
+                "background": "#fcf8ff",
+                "secondary-container": "#5dfd8a",
+                "on-surface": "#111827",
+                "secondary-fixed": "#66ff8e",
+                "error-container": "#ffdad6",
+                "outline-variant": "#c7c4d8",
+                "on-secondary-fixed-variant": "#005322",
+                "inverse-on-surface": "#f3effc",
+                "primary": "#3525cd",
+                "on-surface-variant": "#464555",
+                "info": "#3b82f6",
+                "surface-dim": "#dcd8e5",
+                "on-background": "#1b1b24",
+                "inverse-surface": "#302f39",
+                "surface-container-low": "#f5f2ff",
+                "on-tertiary": "#ffffff",
+                "tertiary-fixed": "#ffdbcc",
+                "tertiary": "#7e3000",
+                "on-tertiary-container": "#ffd2be",
+                "surface-bright": "#fcf8ff",
+                "on-tertiary-fixed-variant": "#7b2f00",
+                "surface-container-high": "#eae6f4",
+                "on-secondary": "#ffffff",
+                "primary-fixed-dim": "#c3c0ff",
+                "on-secondary-fixed": "#002109",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed": "#e2dfff",
+                "on-secondary-container": "#007232",
+                "tertiary-container": "#a44100",
+                "secondary": "#006d2f",
+                "inverse-primary": "#c3c0ff",
+                "success": "#22c55e",
+                "warning": "#f59e0b",
+                "on-primary": "#ffffff",
+                "surface-variant": "#e4e1ee",
+                "outline": "#e5e7eb"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8",
+                "margin-desktop": "32",
+                "margin-mobile": "16",
+                "gutter": "16px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "section-label": [
+                        "Inter"
+                ],
+                "body-md": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-lg": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "section-label": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-md": [
+                        "15px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: #f5f2ff; /* Using surface-container-low from theme to match */
+  }
+  .bento-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .bento-wide { grid-column: span 2; }
+  @media (max-width: 1024px) {
+      .bento-wide { grid-column: span 1; }
+  }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface border-r border-outline fixed left-0 top-0 h-screen w-[260px] flex-col py-base z-50 min-h-screen" style="min-height: 100vh;">
+<div class="px-gutter mb-8 flex items-center gap-3 pt-4">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-lg overflow-hidden relative">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1IDbyx4N3igSBm4QYWX0OdjWWnNsGnZtg_UxbBHV1puX4ARrTwMulLp40F69_nxfsi-RD-ruUGEvLFbyPmPzaNKy0a-dmODBaBegPRQSa2J2vFO1TL_vX1_oLKym-N6oAI14ncX68-2lRASlKHctIF4CuJLI_fwH-fB-07wV_ZtfQ7byc9dUUDzeOCCFaM2F1wBryvyTvtGYa8ZTRjuLQhhikzbF-PxTB36-ESEOa13jpMKpReRsojx3qhFxGR27YjSARyH8q9r8">
+</div>
+<div>
+<h1 class="font-headline-lg text-[20px] leading-tight font-black text-primary">Naap Book</h1>
+<p class="font-label-md text-[12px] text-on-surface-variant">Management Portal</p>
+</div>
+</div>
+<div class="px-gutter mb-6">
+<button class="w-full hover:bg-opacity-90 text-on-primary font-label-md text-label-md py-3 px-4 rounded-[10px] flex items-center justify-center gap-2 transition-all shadow-sm bg-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">search</span>
+            Search</button>
+</div>
+<ul class="flex flex-col flex-grow px-2 gap-1 overflow-y-auto">
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: &quot;FILL&quot; 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_task">photo_library</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</li>
+</ul><div class="mt-auto pb-4">
+<div class="border-t border-outline my-2"></div>
+<div class="px-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-variant transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex bg-surface border-b border-outline fixed top-0 right-0 w-[calc(100%-260px)] h-16 justify-between items-center px-6 z-40 shadow-sm shadow-black/5">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-[22px] font-bold text-on-surface">Ramesh Tailoring Works</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:opacity-80 transition-opacity rounded-full hover:bg-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-surface-variant overflow-hidden cursor-pointer border border-outline">
+<img alt="Tailor Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a confident male tailor or shop owner, wearing a smart casual shirt, smiling warmly in a bright, modern studio setting with soft natural lighting and a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA6j3DFBiPhVTyxaYALjs9IzmK7f8ULLWn6alu5gNduSWF31phQCzPdG4HXR0Wbrw_DnP2M6u5k2HZobIemmOvLtAUoaSgJGwebn18JuUU3rVjqaU1BnyZOgPPIVxY6QXxUFoBs4KNtbfN_2j2WC25MallPlK_usNMXA___No3Ylq3D_BU3k0NIZt88U2JDIJ1wiibZrhXX5tmBtUKQZ0Ml-I55HjeP5g9R3zfzLbXh9wYrDDgfuT1FMzxQF6WpRc2I2TkA59hGp0">
+</div>
+</div>
+</header>
+<!-- Mobile Nav -->
+<header class="md:hidden flex bg-surface border-b border-outline fixed top-0 left-0 w-full h-16 justify-between items-center px-4 z-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm overflow-hidden">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdu9wBcgfbXBn9GZG5GlqWPQQgWv1MDfcNQh8IJYUPgk192q2BgfxPWkizf_iNbhcC6EK21yU-bhFkZXOYmefvsSnADsaFG9Xlg3rP7TzLc_HVvl46qt_jZBeFtFoCoHq0rFGjtQXSCbU_t02wqGNCU_d_UVhMFwRs20VYKyc3xhqw9YSEf5PfgK9hVWpjs2SjIlKNbYxTxTsYYBgWl6IcDL56FF2fJl4pAiK1Pjm9cjDrGCp5kOb1wr2NNqYdYWK4bpicq3aMRBs">
+</div>
+<h2 class="font-headline-lg-mobile text-[18px] font-bold text-on-surface truncate max-w-[150px]">Ramesh Tailoring</h2>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant rounded-md">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="md:ml-[260px] pt-20 md:pt-24 px-4 md:px-6 pb-24 md:pb-12 max-w-7xl mx-auto">
+<div class="w-full"><div class="mb-6">
+    <a href="#" class="inline-flex items-center gap-2 px-3 py-2 -ml-3 text-primary hover:bg-primary/10 rounded-lg transition-colors font-label-md text-label-md group">
+        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+        Back to Dashboard
+    </a>
+</div>
+<!-- Page Header & Filters -->
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-1">Advanced Analytics</h2>
+<p class="text-on-surface-variant text-body-md">Key performance indicators and shop insights.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface border border-outline rounded-[10px] pl-4 pr-10 py-2 h-[44px] font-label-md text-label-md text-on-surface focus:ring-primary focus:border-primary cursor-pointer shadow-sm">
+<option>This Month</option>
+<option>Last Month</option>
+<option>This Quarter</option>
+<option>This Year</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">arrow_drop_down</span>
+</div>
+<button class="bg-surface border border-outline rounded-[10px] px-4 h-[44px] font-label-md text-label-md text-on-surface flex items-center gap-2 hover:bg-surface-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export
+                    </button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-8">
+<div class="bg-surface rounded-[14px] p-5 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col justify-between h-[120px] hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Total Revenue</p>
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<div class="flex items-end justify-between">
+<h3 class="font-headline-lg text-[28px] font-bold text-on-surface">₹45,200</h3>
+<span class="bg-success/10 text-success font-section-label text-[10px] px-2 py-1 rounded-full">+12%</span>
+</div>
+</div>
+<div class="bg-surface rounded-[14px] p-5 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col justify-between h-[120px] hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Avg. Order Value</p>
+<span class="material-symbols-outlined text-primary">receipt_long</span>
+</div>
+<div class="flex items-end justify-between">
+<h3 class="font-headline-lg text-[28px] font-bold text-on-surface">₹1,850</h3>
+<span class="bg-success/10 text-success font-section-label text-[10px] px-2 py-1 rounded-full">+5%</span>
+</div>
+</div>
+<div class="bg-surface rounded-[14px] p-5 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col justify-between h-[120px] hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Customer Retention</p>
+<span class="material-symbols-outlined text-primary">group_add</span>
+</div>
+<div class="flex items-end justify-between">
+<h3 class="font-headline-lg text-[28px] font-bold text-on-surface">68%</h3>
+<span class="bg-success/10 text-success font-section-label text-[10px] px-2 py-1 rounded-full">+2%</span>
+</div>
+</div>
+<div class="bg-surface rounded-[14px] p-5 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col justify-between h-[120px] hover:shadow-[0_4px_20px_-4px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+<div class="flex justify-between items-start">
+<p class="font-label-md text-label-md text-on-surface-variant">Efficiency (Jobs/Day)</p>
+<span class="material-symbols-outlined text-primary">speed</span>
+</div>
+<div class="flex items-end justify-between">
+<h3 class="font-headline-lg text-[28px] font-bold text-on-surface">14.5</h3>
+<span class="bg-error/10 text-error font-section-label text-[10px] px-2 py-1 rounded-full">-1.2</span>
+</div>
+</div>
+</div>
+<!-- Main Charts Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-8">
+<!-- Revenue vs Expenses Chart (Placeholder) -->
+<div class="lg:col-span-2 bg-surface rounded-[14px] p-6 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col min-h-[350px]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-lg text-base font-bold text-on-surface">Revenue vs Expenses</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-label-md text-[12px] text-on-surface-variant">Revenue</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error/70"></span>
+<span class="font-label-md text-[12px] text-on-surface-variant">Expenses</span>
+</div>
+</div>
+</div>
+<div class="flex-1 w-full bg-surface-container-low rounded-lg border border-outline/30 flex items-center justify-center relative overflow-hidden">
+<!-- Abstract Chart Representation -->
+<div class="absolute bottom-0 left-0 w-full h-[60%] bg-gradient-to-t from-primary/20 to-transparent flex items-end">
+<svg class="w-full h-full text-primary opacity-50" preserveAspectRatio="none" viewBox="0 0 100 100">
+<path d="M0,100 C20,80 40,90 60,40 C80,10 100,50 100,50 L100,100 Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant relative z-10 bg-surface/80 px-4 py-2 rounded-full">Chart Visualization Area</span>
+</div>
+</div>
+<!-- Orders by Garment Type -->
+<div class="bg-surface rounded-[14px] p-6 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col min-h-[350px]">
+<h3 class="font-headline-lg text-base font-bold text-on-surface mb-6">Orders by Garment</h3>
+<div class="flex-1 flex flex-col justify-between gap-4">
+<!-- Bar Item -->
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-2">👚 Blouse</span>
+<span class="font-label-md text-[12px] text-on-surface-variant">45%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-2">👔 Kurta</span>
+<span class="font-label-md text-[12px] text-on-surface-variant">30%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary/80 h-2 rounded-full" style="width: 30%"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-2">👖 Pant</span>
+<span class="font-label-md text-[12px] text-on-surface-variant">15%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary/60 h-2 rounded-full" style="width: 15%"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div>
+<div class="flex justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-2">👗 Dress</span>
+<span class="font-label-md text-[12px] text-on-surface-variant">10%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary/40 h-2 rounded-full" style="width: 10%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Insights & Leaderboard -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Top Repeat Customers -->
+<div class="lg:col-span-2 bg-surface rounded-[14px] p-6 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-lg text-base font-bold text-on-surface">Top Repeat Customers</h3>
+<button class="font-label-md text-label-md text-primary hover:underline">View All</button>
+</div>
+<div class="flex flex-col gap-0">
+<!-- List Item -->
+<div class="flex items-center justify-between py-3 border-b border-outline/30 last:border-0">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">AS</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Aarav Sharma</p>
+<p class="font-label-md text-[12px] text-on-surface-variant">12 Orders this month</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">₹18,500</p>
+<p class="font-section-label text-[10px] text-success flex items-center justify-end gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Top 1%</p>
+</div>
+</div>
+<!-- List Item -->
+<div class="flex items-center justify-between py-3 border-b border-outline/30 last:border-0">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center font-bold">NP</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Neha Patel</p>
+<p class="font-label-md text-[12px] text-on-surface-variant">8 Orders this month</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">₹12,200</p>
+<p class="font-section-label text-[10px] text-success flex items-center justify-end gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Top 5%</p>
+</div>
+</div>
+<!-- List Item -->
+<div class="flex items-center justify-between py-3 border-b border-outline/30 last:border-0">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold">VK</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Vikram Kumar</p>
+<p class="font-label-md text-[12px] text-on-surface-variant">5 Orders this month</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface">₹8,900</p>
+<p class="font-section-label text-[10px] text-on-surface-variant flex items-center justify-end gap-1"><span class="material-symbols-outlined text-[14px]">horizontal_rule</span> Steady</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Insights Column -->
+<div class="flex flex-col gap-4">
+<!-- Insight Card 1 -->
+<div class="bg-surface rounded-[14px] p-5 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col gap-2">
+<div class="flex items-center gap-2 text-on-surface-variant mb-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="font-label-md text-label-md">Peak Busy Hours</span>
+</div>
+<h4 class="font-headline-lg text-[18px] font-bold text-on-surface">4:00 PM - 7:00 PM</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">35% of walk-ins occur during this window. Consider extra staff.</p>
+</div>
+<!-- Insight Card 2 -->
+<div class="bg-surface rounded-[14px] p-5 border border-outline shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] flex flex-col gap-2 flex-1">
+<div class="flex items-center gap-2 text-on-surface-variant mb-2">
+<span class="material-symbols-outlined text-primary">star</span>
+<span class="font-label-md text-label-md">Top Performing Garment</span>
+</div>
+<h4 class="font-headline-lg text-[18px] font-bold text-on-surface">Designer Blouse</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Highest profit margin (65%) and fastest growing category.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+
+</body></html>

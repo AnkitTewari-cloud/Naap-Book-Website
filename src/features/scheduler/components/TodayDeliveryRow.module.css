@@ -1,0 +1,264 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  border-left-width: 4px;
+  border-left-color: var(--row-accent);
+  background: color-mix(in srgb, var(--row-accent) 5%, var(--color-surface));
+  transition: background var(--transition-fast);
+}
+
+.row:hover {
+  background: color-mix(in srgb, var(--row-accent) 10%, var(--color-surface));
+}
+
+.row_ready {
+  --row-accent: var(--color-success);
+}
+
+.row_pending {
+  --row-accent: var(--color-warning);
+}
+
+.row_delayed {
+  --row-accent: var(--color-danger);
+}
+
+[data-theme="dark"] .row {
+  background: var(--color-surface-container);
+}
+
+[data-theme="dark"] .row:hover {
+  background: var(--color-surface-container-high);
+}
+
+[data-theme="dark"] .row_ready,
+[data-theme="dark"] .row_pending,
+[data-theme="dark"] .row_delayed {
+  background: var(--color-surface-container);
+}
+
+[data-theme="dark"] .row_ready:hover,
+[data-theme="dark"] .row_pending:hover,
+[data-theme="dark"] .row_delayed:hover {
+  background: var(--color-surface-container-high);
+}
+
+.rowLink {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .row {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .rowLink {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.avatarPrimary {
+  background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  color: var(--color-primary);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.avatarAccent {
+  background: color-mix(in srgb, var(--color-secondary, var(--color-accent)) 18%, transparent);
+  color: var(--color-secondary, var(--color-accent));
+  border: 1px solid
+    color-mix(in srgb, var(--color-secondary, var(--color-accent)) 35%, transparent);
+}
+
+.chipCol {
+  flex-shrink: 0;
+  width: 6rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.chip_ready {
+  background: var(--color-success);
+  color: var(--color-primary-text, #fff);
+}
+
+.chip_pending {
+  background: var(--color-warning);
+  color: var(--color-primary-text, #fff);
+}
+
+.chip_delayed {
+  background: var(--color-danger);
+  color: var(--color-primary-text, #fff);
+}
+
+[data-theme="dark"] .chip_ready {
+  background: color-mix(in srgb, var(--color-success) 20%, transparent);
+  color: var(--color-success);
+  border: 1px solid color-mix(in srgb, var(--color-success) 30%, transparent);
+}
+
+[data-theme="dark"] .chip_pending {
+  background: color-mix(in srgb, var(--color-warning) 20%, transparent);
+  color: var(--color-warning);
+  border: 1px solid color-mix(in srgb, var(--color-warning) 30%, transparent);
+}
+
+[data-theme="dark"] .chip_delayed {
+  background: color-mix(in srgb, var(--color-danger) 20%, transparent);
+  color: var(--color-danger);
+  border: 1px solid color-mix(in srgb, var(--color-danger) 30%, transparent);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.nameRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--spacing-sm);
+}
+
+.customerName {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.jobRef {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.garment {
+  margin: 2px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.time {
+  margin: 2px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  opacity: 0.85;
+}
+
+.amountCol {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.amount {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .actions {
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+}
+
+.actionWa,
+.actionSms {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.actionWa {
+  border: 1px solid color-mix(in srgb, var(--color-success) 30%, transparent);
+  color: var(--color-success);
+}
+
+.actionWa:hover {
+  background: var(--color-success);
+  color: var(--color-primary-text, #fff);
+}
+
+.actionSms {
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.actionSms:hover {
+  background: var(--color-surface-variant, var(--color-surface-muted));
+}
+
+[data-theme="dark"] .actionWa:hover {
+  background: color-mix(in srgb, var(--color-success) 10%, transparent);
+  color: var(--color-success);
+}
+
+[data-theme="dark"] .actionSms {
+  border-color: var(--color-border-variant);
+}
+
+[data-theme="dark"] .actionSms:hover {
+  background: var(--color-surface-variant);
+}

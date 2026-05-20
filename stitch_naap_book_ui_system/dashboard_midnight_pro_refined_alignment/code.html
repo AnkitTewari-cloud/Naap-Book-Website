@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Naap Book - Management Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface": "#0b1326",
+                "surface-dim": "#0b1326",
+                "surface-bright": "#31394d",
+                "surface-container-lowest": "#060e20",
+                "surface-container-low": "#131b2e",
+                "surface-container": "#1b243a",
+                "surface-container-high": "#262f46",
+                "surface-container-highest": "#313a52",
+                "on-surface": "#fcf8ff",
+                "on-surface-variant": "#c7c4d8",
+                "outline": "#464555",
+                "outline-variant": "#302f39",
+                "primary": "#4f46e5",
+                "on-primary": "#ffffff",
+                "primary-container": "#3323cc",
+                "on-primary-container": "#e2dfff",
+                "secondary": "#22c55e",
+                "on-secondary": "#ffffff",
+                "secondary-container": "#005322",
+                "on-secondary-container": "#5dfd8a",
+                "tertiary": "#ffb695",
+                "on-tertiary": "#351000",
+                "tertiary-container": "#7b2f00",
+                "on-tertiary-container": "#ffdbcc",
+                "error": "#ef4444",
+                "on-error": "#ffffff",
+                "error-container": "#93000a",
+                "on-error-container": "#ffdad6",
+                "background": "#060e20",
+                "on-background": "#fcf8ff",
+                "success": "#22c55e",
+                "warning": "#f59e0b",
+                "info": "#3b82f6"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.5rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8",
+                "margin-desktop": "32",
+                "margin-mobile": "16",
+                "gutter": "16px"
+        },
+        "fontFamily": {
+                "headline-lg-mobile": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "section-label": ["Inter"],
+                "body-md": ["Inter"]
+        },
+        "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "section-label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "body-md": ["15px", {"lineHeight": "24px", "fontWeight": "400"}]
+        }
+      },
+    },
+  }
+</script>
+<style>
+  body {
+    background-color: #060e20;
+  }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface-container-low border-r border-outline-variant fixed left-0 top-0 h-screen w-[260px] flex-col py-base z-50" style="min-height: 100vh;">
+<div class="px-gutter mb-8 flex items-center gap-3 pt-4">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-lg overflow-hidden relative">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1IDbyx4N3igSBm4QYWX0OdjWWnNsGnZtg_UxbBHV1puX4ARrTwMulLp40F69_nxfsi-RD-ruUGEvLFbyPmPzaNKy0a-dmODBaBegPRQSa2J2vFO1TL_vX1_oLKym-N6oAI14ncX68-2lRASlKHctIF4CuJLI_fwH-fB-07wV_ZtfQ7byc9dUUDzeOCCFaM2F1wBryvyTvtGYa8ZTRjuLQhhikzbF-PxTB36-ESEOa13jpMKpReRsojx3qhFxGR27YjSARyH8q9r8"/>
+</div>
+<div>
+<h1 class="font-headline-lg text-[20px] leading-tight font-black text-primary">Naap Book</h1>
+<p class="font-label-md text-[12px] text-on-surface-variant">Management Portal</p>
+</div>
+</div>
+<div class="px-gutter mb-6">
+<button class="w-full hover:bg-opacity-90 text-on-primary font-label-md text-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-sm bg-primary">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>search</span>
+            Search</button>
+</div>
+<ul class="flex flex-col flex-grow px-2 gap-1 overflow-y-auto">
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-secondary font-bold border-r-4 border-secondary bg-secondary/10 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style='font-variation-settings: "FILL" 1;'>dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-label-md text-label-md">Today</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_task">photo_library</span>
+<span class="font-label-md text-label-md">Gallery</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Customers</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pb-4">
+<div class="border-t border-outline-variant my-2"></div>
+<div class="px-2">
+<a class="flex items-center gap-3 px-3 py-3 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex bg-surface-container-lowest border-b border-outline-variant fixed top-0 right-0 w-[calc(100%-260px)] h-16 justify-between items-center px-6 z-40 shadow-sm">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-[22px] font-bold text-on-surface">Ramesh Tailoring Works</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-on-surface transition-colors rounded-full hover:bg-surface-container-highest">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-9 h-9 rounded-full bg-surface-container-highest overflow-hidden cursor-pointer border border-outline-variant">
+<img alt="Tailor Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a confident male tailor or shop owner, wearing a smart casual shirt, smiling warmly in a bright, modern studio setting with soft natural lighting and a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA6j3DFBiPhVTyxaYALjs9IzmK7f8ULLWn6alu5gNduSWF31phQCzPdG4HXR0Wbrw_DnP2M6u5k2HZobIemmOvLtAUoaSgJGwebn18JuUU3rVjqaU1BnyZOgPPIVxY6QXxUFoBs4KNtbfN_2j2WC25MallPlK_usNMXA___No3Ylq3D_BU3k0NIZt88U2JDIJ1wiibZrhXX5tmBtUKQZ0Ml-I55HjeP5g9R3zfzLbXh9wYrDDgfuT1FMzxQF6WpRc2I2TkA59hGp0"/>
+</div>
+</div>
+</header>
+<!-- Mobile Nav -->
+<header class="md:hidden flex bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 w-full h-16 justify-between items-center px-4 z-40">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-sm overflow-hidden">
+<img alt="Shop Logo" class="w-full h-full object-cover" data-alt="A modern, abstract, minimalistic geometric logo design in white against a vibrant green background, conveying professionalism, growth, and structured organization in a corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdu9wBcgfbXBn9GZG5GlqWPQQgWv1MDfcNQh8IJYUPgk192q2BgfxPWkizf_iNbhcC6EK21yU-bhFkZXOYmefvsSnADsaFG9Xlg3rP7TzLc_HVvl46qt_jZBeFtFoCoHq0rFGjtQXSCbU_t02wqGNCU_d_UVhMFwRs20VYKyc3xhqw9YSEf5PfgK9hVWpjs2SjIlKNbYxTxTsYYBgWl6IcDL56FF2fJl4pAiK1Pjm9cjDrGCp5kOb1wr2NNqYdYWK4bpicq3aMRBs"/>
+</div>
+<h2 class="font-headline-lg-mobile text-[18px] font-bold text-on-surface truncate max-w-[150px]">Ramesh Tailoring</h2>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest rounded-md">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="md:ml-[260px] pt-20 md:pt-24 px-4 md:px-6 pb-24 md:pb-12 max-w-7xl mx-auto">
+<div class="w-full">
+<div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-1">Dashboard Overview</h2>
+<p class="text-on-surface-variant text-body-md">Welcome back. Here's what's happening with your shop today.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-primary border border-primary rounded-lg text-on-primary font-label-md text-label-md shadow-sm hover:opacity-90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">analytics</span>
+                Advanced Analytics
+            </button>
+<button class="px-4 py-2 bg-surface-container-high border border-outline-variant rounded-lg text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container-highest transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                Export Report
+            </button>
+</div>
+</div>
+<!-- 2x2 KPI Grid -->
+<div class="grid grid-cols-1 gap-gutter mb-8 lg:grid-cols-4 sm:grid-cols-2">
+<!-- Sales Card -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>payments</span>
+</div>
+<span class="bg-success/20 text-success font-section-label text-[10px] px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 12.5%
+                </span>
+</div>
+<div>
+<h3 class="text-on-surface-variant font-label-md text-label-md mb-1">Total Sales</h3>
+<p class="font-headline-lg text-[28px] font-bold text-on-surface"> 45,200</p>
+<p class="text-[12px] text-on-surface-variant mt-1">vs last month</p>
+</div>
+</div>
+<!-- Forecast Card -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-info/20 flex items-center justify-center text-info">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>monitoring</span>
+</div>
+<span class="bg-success/20 text-success font-section-label text-[10px] px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> 8.2%
+                </span>
+</div>
+<div>
+<h3 class="text-on-surface-variant font-label-md text-label-md mb-1">Forecast Revenue</h3>
+<p class="font-headline-lg text-[28px] font-bold text-on-surface"> 62,000</p>
+<p class="text-[12px] text-on-surface-variant mt-1">Projected for current month</p>
+</div>
+</div>
+<!-- Tomorrow Card -->
+<div class="bg-surface-container-low rounded-xl p-5 border border-outline-variant shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>event_upcoming</span>
+</div>
+</div>
+<div>
+<h3 class="text-on-surface-variant font-label-md text-label-md mb-1">Due Tomorrow</h3>
+<p class="font-headline-lg text-[28px] font-bold text-on-surface">22</p>
+<div class="flex -space-x-2 mt-3">
+<img alt="Customer" class="w-6 h-6 rounded-full border-2 border-surface-container-low object-cover" data-alt="Customer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVehXtzJrEWYBoMZQHr-UIxqhtIZw7g_ma0otsyJ6Gkd5YHSnT82t_IUr9SlO0uGYnvBtGI4m6FoRKGmY4uI5LZRw6dkPYLSVXGxbxkt6cVtMbSpabFvI3xgSDxnSc4CFadjfVht8DuSP8GfVLxHQzDAxcz0O8fCDsNJm0m7s7xrVRrPbkSb4u7685tEfzQj5Kwc6NDQ1BNn52DlPPpMoyVSllOq4gE-n2k2t4xWt5l2TNxFvQ-lRL_RSpCG0Io_Eqo7pmXc3wQf8"/>
+<img alt="Customer" class="w-6 h-6 rounded-full border-2 border-surface-container-low object-cover" data-alt="Customer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxAJnFNihnKhp8rY_ne_FZBoIVujnOfuApXvwcWwhtxRXSoAlTb7G04K7WMkgGAKcR7g5Kas5_v6er5vzGH-5d5TFbW4-60tFcj2Ck0kl7THtbdeSwNPRNug46NPM2LgYh3bCd_DZi0uEkqx_xY9pvRahCkkAph5E36G1cAj36ksSyTAYrdJtJUw-aY92LZMcjFiQScy-1gigHuxCA9yVj-mbCnTTvfwiKzzVkLiKzyPFWhlqLPv5KKoXlHMvbXahSPF9A599iBI0"/>
+<img alt="Customer" class="w-6 h-6 rounded-full border-2 border-surface-container-low object-cover" data-alt="Customer avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWG4Az7bbJhNWcUbTxl5k6dn6EXkNKZb7th_-IV-QH88wL6eDy0OCo1OM3EbX8x2NsQ0utMwOrrfr_sl_HQMcHKofz0mbTwQ2J2zIz59VOuLwUbT6ctzmdmnvsD_1tyEPmpGlgieL7lqzA70JTrcJv6dOBcn_zzKp-ylC1MjAsL7E2eSdOOgKBBeDTf08HyU6cEAdywOM-0NoIqByBrJv5K-hcPc2zOgbdcaKADCO_BbAOPzuI9sB0U1D8IZ9DmPReuOqmlswOO6E"/>
+<div class="w-6 h-6 rounded-full border-2 border-surface-container-low bg-surface-container-highest text-[10px] flex items-center justify-center font-bold text-on-surface-variant">+19</div>
+</div>
+</div>
+</div>
+<!-- New Job Green Tile -->
+<div class="bg-success text-on-secondary rounded-xl p-5 border border-success/30 shadow-sm flex flex-col justify-between hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer min-h-[160px]">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px] font-bold">add</span>
+</div>
+</div>
+<div>
+<h3 class="font-bold text-lg">New Job</h3>
+<p class="text-white/80 text-[12px] mt-1">Quick Entry</p>
+</div>
+</div>
+</div>
+<!-- Main Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Recent Jobs List -->
+<div class="lg:col-span-2 bg-surface-container-low rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<h3 class="font-headline-lg text-base font-bold text-on-surface">
+<div class="flex items-center gap-2">
+<img alt="Thread Spool" class="w-6 h-6 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0uhX1mzOBgEokOuORU6irXieR-TNfo7vX7ulKQ5kjffM_kCC69qTAfwPfkBeDzpQI-t0vxoOzfLxMyiT0DAs8rceMMoydldBECkvKqqxEwsMlTxsRqz7_Wl1lWNM8LneZsL2u0PrWryzqtTY_99-KIytySt4-AHmYtQYyWEYvfZUnbNfrjV8awSyGGpH1MXaL413nreiAKW1-iqm0iGojm4LLuyd2JiEm0k0PxvOMZpIxykYhg2NdyiY4qA"/>
+<span class="">Today's Deliveries</span>
+</div>
+</h3>
+<a class="text-secondary font-label-md text-label-md hover:underline" href="#">View All</a>
+</div>
+<div class="flex-grow overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-section-label border-b border-outline-variant">
+<th class="p-4 font-semibold uppercase text-[11px] tracking-wider">Status</th>
+<th class="p-4 font-semibold uppercase text-[11px] tracking-wider">Customer</th>
+<th class="p-4 font-semibold uppercase text-[11px] tracking-wider">Item</th>
+<th class="p-4 font-semibold uppercase text-[11px] tracking-wider">Job ID</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-pointer text-sm">
+<td class="p-4"><span class="bg-warning/20 text-warning font-label-md px-4 py-1.5 rounded-full text-[12px] whitespace-nowrap">In Progress</span></td>
+<td class="p-4"><div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-[10px]">AK</div><span class="text-on-surface">Amit Kumar</span></div></td>
+<td class="p-4 text-on-surface-variant">2x Trousers, 1x Shirt</td>
+<td class="p-4 font-medium text-on-surface">#NB-8492</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-pointer text-sm">
+<td class="p-4"><span class="bg-success/20 text-success font-label-md px-4 py-1.5 rounded-full text-[12px] whitespace-nowrap">Ready</span></td>
+<td class="p-4"><div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-info/20 text-info flex items-center justify-center font-bold text-[10px]">SM</div><span class="text-on-surface">Sunita Mehta</span></div></td>
+<td class="p-4 text-on-surface-variant">Salwar Suit</td>
+<td class="p-4 font-medium text-on-surface">#NB-8491</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-pointer text-sm">
+<td class="p-4"><span class="bg-surface-container-highest text-on-surface-variant font-label-md px-4 py-1.5 rounded-full text-[12px] whitespace-nowrap">Delivered</span></td>
+<td class="p-4"><div class="flex items-center gap-2"><img alt="Customer" class="w-7 h-7 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwzk-HiCpY_gi2ZK-mZQmK_2AstUCYirOyGsCXIwqDOeVnz_5CPBgYdOiuUV57vi-yIlvp_LNpaGcRt-wx5qvdjrNKvHH2SfPjTpNjpyX-znoQl1cvH2vYGelH35-kgqe-86C7RFAFhiUYvtFUHRN0lKpQyerI9A1pu0iNr0B4z3-ytqVOnTcg-wE4ZQ2GUFsSQ-4YvYd7WKTSmnXeKIjIjkRFeOl12E5uqjsqW6QpcFwGsOgdO-vGQ8ZKFOOoryDfjaU9Rq9tMfU"/><span class="text-on-surface">Rahul Sharma</span></div></td>
+<td class="p-4 text-on-surface-variant">Blazer</td>
+<td class="p-4 font-medium text-on-surface">#NB-8490</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors group cursor-pointer text-sm">
+<td class="p-4"><span class="bg-error/20 text-error font-label-md px-4 py-1.5 rounded-full text-[12px] whitespace-nowrap">Pending Fabric</span></td>
+<td class="p-4"><div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-tertiary/20 text-tertiary flex items-center justify-center font-bold text-[10px]">VJ</div><span class="text-on-surface">Vikram Joshi</span></div></td>
+<td class="p-4 text-on-surface-variant">Custom Sherwani</td>
+<td class="p-4 font-medium text-on-surface">#NB-8489</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Quick Actions & Notifications Side Column -->
+<div class="flex flex-col gap-gutter">
+<!-- Quick Actions Highlighted -->
+<div class="bg-primary-container rounded-xl p-6 text-on-primary-container shadow-md relative overflow-hidden">
+<div class="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-white opacity-5 rounded-full blur-2xl"></div>
+<div class="absolute bottom-0 left-0 -mb-8 -ml-8 w-40 h-40 bg-black opacity-10 rounded-full blur-2xl"></div>
+<h3 class="font-headline-lg text-[18px] font-bold mb-4 relative z-10">Quick Actions</h3>
+<div class="grid grid-cols-2 gap-3 relative z-10">
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/5 rounded-xl p-3 flex flex-col items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>qr_code_scanner</span>
+<span class="font-label-md text-[12px]">Scan Tag</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/5 rounded-xl p-3 flex flex-col items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>person_add</span>
+<span class="font-label-md text-[12px]">New Client</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/5 rounded-xl p-3 flex flex-col items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>sms</span>
+<span class="font-label-md text-[12px]">Send SMS</span>
+</button>
+<button class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/5 rounded-xl p-3 flex flex-col items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>receipt_long</span>
+<span class="font-label-md text-[12px]">Invoice</span>
+</button>
+</div>
+</div>
+<!-- Urgent Attention -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant shadow-sm flex-grow flex flex-col">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+<h3 class="font-headline-lg text-[18px] font-bold text-on-surface">Urgent Attention</h3>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">push_pin</span>
+</button>
+</div>
+<div class="p-2 flex-grow overflow-y-auto">
+<div class="p-3 hover:bg-surface-container rounded-lg flex gap-3 transition-colors mb-1 cursor-pointer border-l-4 border-error">
+<div class="w-8 h-8 rounded-full bg-error/20 text-error flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Overdue Delivery</p>
+<p class="text-[12px] text-on-surface-variant mt-0.5">Job #NB-8422 (Priya Singh) was due yesterday.</p>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container rounded-lg flex gap-3 transition-colors mb-1 cursor-pointer border-l-4 border-warning">
+<div class="w-8 h-8 rounded-full bg-warning/20 text-warning flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Low Inventory</p>
+<p class="text-[12px] text-on-surface-variant mt-0.5">White thread stock is running low (approx. 2 days left).</p>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container rounded-lg flex gap-3 transition-colors cursor-pointer border-l-4 border-info">
+<div class="w-8 h-8 rounded-full bg-info/20 text-info flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Customer Inquiry</p>
+<p class="text-[12px] text-on-surface-variant mt-0.5">New message from Rahul regarding fabric choice.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

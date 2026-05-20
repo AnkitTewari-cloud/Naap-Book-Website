@@ -1,0 +1,589 @@
+.page {
+  padding: var(--page-padding-y) var(--page-padding-x);
+  padding-bottom: var(--page-padding-bottom);
+  max-width: 40rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  font-family: var(--font-geist-sans), "Inter", system-ui, sans-serif;
+}
+
+/* —— Header —— */
+.topBar {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.backLink {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.backLink:hover {
+  background: var(--color-surface-container-high, var(--color-background));
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .backLink {
+  background: var(--color-surface-container);
+  border-color: var(--color-border-variant);
+}
+
+.headerMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.jobNumber {
+  margin: 0;
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.headerMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px var(--spacing-md);
+  border-radius: var(--radius-pill);
+  background: var(--pill-bg, var(--color-text-muted));
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  line-height: 1.2;
+}
+
+.dateChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px var(--spacing-md);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .dateChip {
+  background: var(--color-surface-container);
+  border-color: var(--color-border-variant);
+}
+
+.dateChipOverdue {
+  border-color: color-mix(in srgb, var(--color-status-overdue) 50%, var(--color-border));
+  color: var(--color-status-overdue);
+  background: color-mix(in srgb, var(--color-status-overdue) 12%, var(--color-surface));
+}
+
+.overdueBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-status-overdue);
+  color: #fff;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* —— Cards —— */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  box-shadow: var(--shadow-card, var(--shadow-sm));
+}
+
+[data-theme="dark"] .card {
+  background: var(--color-surface-container);
+  border-color: var(--color-border-variant);
+  box-shadow: none;
+}
+
+.cardTitle {
+  margin: 0 0 var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* —— Customer —— */
+.customerCard {
+  composes: card;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.customerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  background: var(--color-accent-muted);
+  color: var(--color-primary);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.customerInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.customerName {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.customerPhone {
+  margin: 4px 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.contactActions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.contactBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: var(--touch-target-min);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: background var(--transition-fast);
+}
+
+.contactBtn:hover {
+  background: var(--color-surface-container-high, var(--color-background));
+}
+
+[data-theme="dark"] .contactBtn {
+  background: var(--color-surface-container-high);
+  border-color: var(--color-border-variant);
+}
+
+.contactCall {
+  color: var(--color-primary);
+  border-color: color-mix(in srgb, var(--color-primary) 25%, var(--color-border));
+}
+
+.contactWa {
+  background: var(--color-whatsapp);
+  border-color: transparent;
+  color: #fff;
+}
+
+.contactWa:hover {
+  background: color-mix(in srgb, var(--color-whatsapp) 88%, #000);
+}
+
+.waIcon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* —— Garment & fabric —— */
+.garmentRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.garmentEmoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.garmentLabel {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.garmentQty {
+  margin: 2px 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.fabricRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.colorSwatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.fabricNotes {
+  margin: var(--spacing-xs) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* —— Measurements —— */
+.measureGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.measureChip {
+  font-size: var(--font-size-sm);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+[data-theme="dark"] .measureChip {
+  background: var(--color-surface-container-high);
+  border-color: var(--color-border-variant);
+}
+
+.measureChip strong {
+  font-weight: 700;
+}
+
+.emptyHint {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* —— Pricing —— */
+.priceMain {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.priceBreakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.balanceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .balanceRow {
+  border-color: var(--color-border-variant);
+}
+
+.balanceLabel {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.balanceAmount {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* —— Status stepper —— */
+.stepper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  padding-bottom: var(--spacing-xs);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.stepper::-webkit-scrollbar {
+  display: none;
+}
+
+.step {
+  flex: 1;
+  min-width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  left: calc(50% + 10px);
+  right: calc(-50% + 10px);
+  height: 2px;
+  background: var(--color-border);
+  z-index: 0;
+}
+
+[data-theme="dark"] .step:not(:last-child)::after {
+  background: var(--color-border-variant);
+}
+
+.stepDone:not(:last-child)::after {
+  background: var(--step-color, var(--color-primary));
+  opacity: 0.5;
+}
+
+.stepDot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .stepDot {
+  background: var(--color-surface-container-high);
+  border-color: var(--color-border-variant);
+}
+
+.stepActive .stepDot {
+  border-color: var(--step-color, var(--color-primary));
+  background: var(--step-color, var(--color-primary));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--step-color, var(--color-primary)) 25%, transparent);
+}
+
+.stepDone .stepDot {
+  border-color: var(--step-color, var(--color-primary));
+  background: var(--step-color, var(--color-primary));
+}
+
+.stepLabel {
+  font-size: 9px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--color-text-muted);
+  max-width: 56px;
+}
+
+.stepActive .stepLabel,
+.stepDone .stepLabel {
+  color: var(--color-text);
+}
+
+.stepCancelled .stepDot {
+  border-color: var(--color-status-cancelled);
+  background: var(--color-status-cancelled);
+}
+
+/* —— Status actions —— */
+.statusActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.nextStatusRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.statusBtn {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-pill);
+  border: none;
+  background: var(--btn-bg, var(--color-primary));
+  color: #fff;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  min-height: var(--touch-target-min);
+  transition: opacity var(--transition-fast);
+}
+
+.statusBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.statusBtnCancel {
+  composes: statusBtn;
+  background: transparent;
+  color: var(--color-status-cancelled);
+  border: 1px solid color-mix(in srgb, var(--color-status-cancelled) 40%, var(--color-border));
+}
+
+/* —— Timeline —— */
+.timelineList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.timelineItem {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+/* —— Footer actions —— */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.actionLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  min-height: var(--touch-target-min);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: background var(--transition-fast);
+}
+
+.actionLink:hover {
+  background: var(--color-surface-container-high, var(--color-background));
+}
+
+[data-theme="dark"] .actionLink {
+  background: var(--color-surface-container);
+  border-color: var(--color-border-variant);
+}
+
+.actionPrimary {
+  composes: actionLink;
+  background: var(--color-primary);
+  border-color: transparent;
+  color: var(--color-primary-text);
+}
+
+.actionPrimary:hover {
+  background: color-mix(in srgb, var(--color-primary) 90%, #000);
+}
+
+.actionWa {
+  composes: actionLink;
+  background: var(--color-whatsapp);
+  border-color: transparent;
+  color: #fff;
+}
+
+.actionWa:hover {
+  background: color-mix(in srgb, var(--color-whatsapp) 88%, #000);
+}
+
+/* —— States —— */
+.stateMessage {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.stateError {
+  composes: stateMessage;
+  color: var(--color-danger);
+}
+
+.retryBtn {
+  align-self: flex-start;
+  min-height: var(--touch-target-min);
+  padding: 0 var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+  font-weight: 700;
+  cursor: pointer;
+}
